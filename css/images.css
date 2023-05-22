@@ -1,0 +1,16 @@
+.red-polygon{
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    position: relative;
+    width: 50%;
+}
+
+.text-image{
+    position: absolute;
+    top: 210px;
+    right: 250px;
+    left: 240px;
+    font-size: 20px;
+    color: white;
+}
