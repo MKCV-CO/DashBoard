@@ -1,18 +1,17 @@
 'use strict'
 
-console.log("teste");
-
 const routes = {
-    "/": "/",
-    "/voluntario": "../voluntario/voluntario.html",
-    "/empresa":"../empresa/empresa.html",
-    "/calendario":"../calendario/calendario.html",
-    "/video":"../video/videos.html"
+    "/": "../pages/index.html",
+    "/voluntario": "../pages/voluntario/voluntario.html",
+    "/empresa":"../pages/empresa/empresa.html",
+    "/calendario":"../pages/calendario/calendario.html",
+    "/video":"../pages/video/videos.html"
 };
   
 const route = () => {
     window.event.preventDefault()
     window.history.pushState({}, "", window.event.target.href)
+    console.log(window.event.target);
     handleLocation()
 }
 
