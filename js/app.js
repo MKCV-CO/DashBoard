@@ -21,7 +21,7 @@ const getLogin = () => {
             passwordEmptyError.textContent = 'Senha não pode estar vazia'
             passwordEmptyError.classList.add('empty-error')
             replacingAll(passwordEmptyError, invalidateError)
-        }else if(user != 'admin' && password != 'admin_cultural_path'){
+        }else if(user != 'admin' || password != 'admin_cultural_path'){
             wrongUserPassword.textContent = 'Usuário e Senha não coicidem'
             wrongUserPassword.classList.add('empty-error')
             replacingAll(wrongUserPassword, invalidateError)
