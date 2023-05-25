@@ -1,0 +1,70 @@
+.records{
+    width: 100%;
+    user-select: none;
+    text-align: left;
+}
+
+.fields-table-header{
+    background-color: #3B55A2;
+    color: white;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+.fields-table-main{
+    color: black;
+    font-size: 12px;
+    width: 80px;
+    overflow-x: auto;
+}
+
+.fields-table-main td{
+    height: 50px;
+    max-width: 200px;
+    text-align: center;
+    background-color: #ccc;
+    overflow-x: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.fields-table-main td:last-child{
+    width: 100px;
+}
+
+
+.edit-button, .delete-button{
+    border-style: none;
+    height: 30px;
+    width: 30px;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+}
+
+.edit-button{
+    background-color: #28A745;
+}
+
+.delete-button{
+    background-color: #E82424;
+}
+
+.fields-table-main td::-webkit-scrollbar-track {
+    background-color:#ccc;
+    border-radius: 15px;
+}
+  
+.fields-table-main td::-webkit-scrollbar {
+    height: 4px;
+    width: 2px;
+    background: #ccc;  
+}
+
+.fields-table-main td::-webkit-scrollbar-thumb {
+    background: #3B55A2;
+    width: 2px;
+    border-radius: 10px;
+}

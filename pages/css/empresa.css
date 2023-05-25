@@ -1,6 +1,6 @@
 .register-company{
     display: grid;
-    grid-template-rows: 100px 50px 1fr;
+    grid-template-rows:1fr;
     place-content: center;
 }
 
@@ -60,29 +60,3 @@ form input{
     align-self: start;
 }
 
-.button-area{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-}
-
-.btn-register-company{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    background-color: #3B55A2;
-    color: white;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.btn-register-company:hover{
-    width: 250px;
-    height: 35px;
-    transition: .2s;
-}

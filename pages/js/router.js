@@ -4,6 +4,7 @@ const routes = {
     "/": "../pages/index.html",
     "/voluntario": "../pages/voluntario/voluntario.html",
     "/empresa":"../pages/empresa/empresa.html",
+    "/escolas":"../pages/escola/escola.html",
     "/calendario":"../pages/calendario/calendario.html",
     "/video":"../pages/video/videos.html"
 };
