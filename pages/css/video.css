@@ -1,4 +1,4 @@
-.register-voluntary{
+.register-videos{
     display: grid;
     grid-template-rows: 100px 50px 1fr;
     place-content: center;
@@ -16,6 +16,7 @@ form{
 form input{
     width: 200px;
     height: 30px;
+    padding-left: 10px;
     border: 0.5px solid rgb(73, 73, 73);
     border-radius: 5px;
 }
@@ -25,35 +26,6 @@ form input{
     flex-direction: row;
     gap: 10px;
     max-width: 100%;
-    position: relative;
-}
-
-.texts-input-data input{
-    padding-left: 30px;
-}
-
-.icon-voluntario{
-    position: absolute;
-    left: 10px;
-    bottom: 7px;
-}
-
-.icon-card{
-    position: absolute;
-    left: 213px;
-    bottom: 7px;
-}
-
-.icon-telefone{
-    position: absolute;
-    left: 420px;
-    bottom: 7px;
-}
-
-.icon-email{
-    position: absolute;
-    left: 626px;
-    bottom: 7px;
 }
 
 .date-photo-input{
@@ -67,7 +39,7 @@ form input{
     width: 100%;
 }
 
-.btn-register-voluntary{
+.btn-register-video{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +53,7 @@ form input{
     transition: .2s;
 }
 
-.btn-register-voluntary:hover{
+.btn-register-video:hover{
     width: 250px;
     height: 35px;
     transition: .2s;
