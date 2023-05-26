@@ -9,16 +9,50 @@ form{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    max-width: 820px;
+    max-width: 900px;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
 form input{
     width: 200px;
     height: 30px;
-    padding-left: 10px;
     border: 0.5px solid rgb(73, 73, 73);
     border-radius: 5px;
+}
+
+.texts-input-data input{
+    padding-left: 30px;
+}
+
+.icon-escola{
+    position: absolute;
+    left: 5px;
+    bottom: 8px;
+}
+
+.icon-card{
+    position: absolute;
+    left: 212px;
+    bottom: 7px;
+}
+
+.icon-telefone{
+    position: absolute;
+    left: 420px;
+    bottom: 7px;
+}
+
+.icon-email{
+    position: absolute;
+    left: 626px;
+    bottom: 7px;
+}
+
+.icon-voluntario{
+    position: absolute;
+    left: 835px;
+    bottom: 7px;
 }
 
 .texts-input-data, .texts-input-adress{
@@ -29,31 +63,6 @@ form input{
     position: relative;
 }
 
-.icon-empresa{
-    position: absolute;
-    left: 10px;
-    bottom: 7px;    
-}
-
-.icon-cnpj{
-    position: absolute;
-    left: 212px;
-    bottom: 7px;
-}
-
-
-
-.icon-phone{
-    position: absolute;
-    left: 417px;
-    bottom: 7px;
-}
-
-.icon-contact{
-    position: absolute;
-    left: 624px;
-    bottom: 7px;
-}
 
 
 .texts-input-adress{

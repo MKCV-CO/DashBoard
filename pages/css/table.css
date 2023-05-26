@@ -8,17 +8,18 @@
     background-color: #3B55A2;
     color: white;
     height: 30px;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
-
 }
 
 .fields-table-main{
     color: black;
-    font-size: 12px;
+    font-size: 16px;
     width: 80px;
     overflow-x: auto;
 }
+
+
 
 .fields-table-main td{
     height: 50px;
@@ -26,8 +27,6 @@
     text-align: center;
     background-color: #ccc;
     overflow-x: auto;
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 .fields-table-main td:last-child{
