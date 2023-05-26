@@ -1,4 +1,5 @@
 <div class="register-school">
+    <h1>Cadastro de Escolas</h1>
     <form action="" method="post">
         <div class="texts-input-data">
             <i class="fas fa-school icon-escola"></i>
@@ -11,13 +12,13 @@
             <input type="email" name="" id="email-escola" placeholder="Email Escola" class="text-input">
             <i class="fas fa-user icon-voluntario"></i>
             <input type="text" name="" id="responsavel" placeholder="Responsavel" class="text-input">
-        </div>   
+        </div>
         <div class="texts-input-adress">
             <input type="text" name="" id="cep-escola" placeholder="CEP" class="text-input">
-            <input type="text" name="" id="logradouro-escola" placeholder="Logradouro" class="text-input">
-            <input type="text" name="" id="bairro-escola" placeholder="Bairro" class="text-input">
-            <input type="text" name="" id="cidade-escola" placeholder="Cidade" class="text-input">
-            <input type="text" name="" id="estado-escola" placeholder="Estado" class="text-input">
+            <input type="text" name="" id="logradouro-escola" placeholder="Logradouro" class="text-input" disabled="">
+            <input type="text" name="" id="bairro-escola" placeholder="Bairro" class="text-input" disabled="">
+            <input type="text" name="" id="cidade-escola" placeholder="Cidade" class="text-input" disabled="">
+            <input type="text" name="" id="estado-escola" placeholder="Estado" class="text-input" disabled="">
         </div>
     </form>
     <div class="button-area">
@@ -34,22 +35,49 @@
                 <th>Responsável</th>
                 <th>CEP</th>
                 <th>Ação</th>
-            </tr>   
+            </tr>
         </thead>
         <tbody>
             <tr class="fields-table-main">
                 <td>0</td>
                 <td>SENAI Jandira</td>
-                <td>52816149826</td>
-                <td>11972690362</td>
-                <td>matheus.siqueira100@gmail.com</td>
-                <td>18</td>
-                <td class="field-table-main">https://www.google.com/intl/pt-BR/photos/about/</td>
+                <td>12.345.678/0001-00</td>
+                <td>40028922</td>
+                <td>senaijandira@senai.com</td>
+                <td>Lucília</td>
+                <td class="field-table-main">06654270</td>
                 <td>
-                    <button id="edit" class="edit-button" title="Editar Voluntário"><i class="fas fa-edit"></i></button>
-                    <button id="delete" class="delete-button" title="Excluir Voluntário"><i class="fas fa-trash"></i>  </button>
+                    <button id="edit-school" class="edit-button" title="Editar Voluntário"><i
+                            class="fas fa-edit"></i></button>
+                    <button id="delete-school" class="delete-button" title="Excluir Voluntário"><i
+                            class="fas fa-trash"></i> </button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 style="padding-left: 20px; padding-top: 10px;">Editar dados da escola</h2>
+                <span class="modal-close" id="modalClose">&#10006;</span>
+            </header>
+            <form class="modal-form">
+                <input type="text" class="modal-field" placeholder="Nome da Escola">
+                <input type="email" class="modal-field" placeholder="Email da Escola">
+                <input type="text" class="modal-field" placeholder="CNPJ">
+                <input type="text" class="modal-field" placeholder="Telefone">
+                <input type="text" class="modal-field" placeholder="Responsavel">
+                <input type="text" class="modal-field" placeholder="CEP" id="edit-cep-escola">
+                <input type="text" name="" id="edit-logradouro-escola" placeholder="Logradouro" class="modal-field"
+                    disabled="">
+                <input type="text" name="" id="edit-bairro-escola" placeholder="Bairro" class="modal-field" disabled="">
+                <input type="text" name="" id="edit-cidade-escola" placeholder="Cidade" class="modal-field" disabled="">
+                <input type="text" name="" id="edit-estado-escola" placeholder="Estado" class="modal-field" disabled="">
+            </form>
+            <footer class="modal-footer">
+                <button class="button save" id="save-edit">Salvar</button>
+                <button class="button cancel" id="cancel-edit">Cancelar</button>
+            </footer>
+        </div>
+    </div>
 </div>

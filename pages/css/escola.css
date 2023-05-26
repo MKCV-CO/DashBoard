@@ -1,6 +1,6 @@
 .register-school{
     display: grid;
-    grid-template-rows: 100px 50px 50px 1fr;
+    grid-template-rows: 50px 100px 50px 50px 1fr;
     place-content: center;
 }
 
@@ -39,20 +39,20 @@ form input{
 
 .icon-telefone{
     position: absolute;
-    left: 420px;
+    left: 418px;
     bottom: 7px;
 }
 
 .icon-email{
     position: absolute;
-    left: 626px;
+    left: 623px;
     bottom: 7px;
 }
 
 .icon-voluntario{
     position: absolute;
-    left: 835px;
-    bottom: 7px;
+    left: 830px;
+    bottom: 8px;
 }
 
 .texts-input-data, .texts-input-adress{

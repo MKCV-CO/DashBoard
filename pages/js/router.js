@@ -1,6 +1,7 @@
 'use strict'
 
-import { cep } from './index.js'
+import { searchAdress } from './escola/viacep.js'
+import { modalClass } from './escola/modal.js';
 
 const routes = {
     "/": "../pages/index.html",
@@ -14,25 +15,21 @@ const routes = {
 export const route = async() => {
     window.event.preventDefault();
     window.history.pushState({}, "", window.event.target.href);
-    console.log(window.event.target)
     const path = window.location.pathname;
     const route = routes[path];
-    console.log(path);
-    console.log(route);
-
-
     const response = await fetch(route);
     const html = await response.text();
-
     document.getElementById("root").innerHTML = html;
+    pathName(path);
 
-    if (path == '/escolas') {
-        console.log('escolas');
-        cep()
+}
+
+const pathName = (path) => {
+    if(path == '/escolas'){
+        searchAdress(),
+        modalClass()
     }
-
-};
-
-
+}
+ 
 
 window.route = route;
