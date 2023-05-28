@@ -1,5 +1,5 @@
 //Função para criar os dados dinamicamente da tabela
-const createRow = (school) => {
+const createRow = (school, index) => {
     const tableBody = document.querySelector('#table-school>tbdoy') 
 
     const newRow = document.createElement('tr').classList.add('fields-table-main')
@@ -12,10 +12,10 @@ const createRow = (school) => {
         <td>${school.resposavel}</td>
         <td class="field-table-main">${school.cep}</td>
         <td>
-            <button id="edit-school" class="edit-button" title="Editar Voluntário"><i
+            <button id="edit-school-${index}" class="edit-button" title="Editar Voluntário"><i
                     class="fas fa-edit"></i></button>
-            <button id="delete-school" class="delete-button" title="Excluir Voluntário"><i
-                    class="fas fa-trash"></i> </button>
+            <button id="delete-school-${index}" class="delete-button" title="Excluir Voluntário"><i
+                    class="fas fa-trash"></i></button>
         </td>
     `
     tableBody.appendChild(newRow)
@@ -34,10 +34,10 @@ export const updateTable = async () => {
     clearTable()
     dataSchool.forEach(createRow)
 }
-
+ 
 
 //Função para carregar todas as escolas cadastradas no sistema
-const getSchool = async () => {
+export const getSchool = async () => {
     const url = 'http://localhost:8080/v1/cultural-path/escolas'
     const respose = await fetch(url)
     const school = respose.json()
