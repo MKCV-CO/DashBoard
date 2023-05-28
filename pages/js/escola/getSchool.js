@@ -2,8 +2,7 @@
 const createRow = (school) => {
     const tableBody = document.querySelector('#table-school>tbdoy') 
 
-    const newRow = document.createElement('tr')
-    newRow.classList.add('fields-table-main')
+    const newRow = document.createElement('tr').classList.add('fields-table-main')
 
     newRow.innerHTML = `
         <td>${school.nome}</td>
@@ -24,7 +23,6 @@ const createRow = (school) => {
 }
 
 //Função para limpar os dados da tabela sempre que criado uma nova escola
-
 const clearTable = () => {
     const rows = document.querySelectorAll('#table-school>tbody tr')
     rows.forEach(row => row.parentElement.removeChild(row))
@@ -34,7 +32,7 @@ const clearTable = () => {
 export const updateTable = async () => {
     const dataSchool = await getSchool();
     clearTable()
-    dataSchool.forEach(createRow())
+    dataSchool.forEach(createRow)
 }
 
 
