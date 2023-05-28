@@ -1,6 +1,40 @@
+//Função para criar os dados dinamicamente da tabela
+const createRow = (school) => {
+    const tableBody = document.querySelector('#table-school>tbdoy') 
+
+    const newRow = document.createElement('tr')
+    newRow.classList.add('fields-table-main')
+
+    newRow.innerHTML = `
+        <td>${school.nome}</td>
+        <td>${school.cnpj}</td>
+        <td>${school.telefone}</td>
+        <td>${school.email}</td>
+        <td>${school.resposavel}</td>
+        <td class="field-table-main">${school.cep}</td>
+        <td>
+            <button id="edit-school" class="edit-button" title="Editar Voluntário"><i
+                    class="fas fa-edit"></i></button>
+            <button id="delete-school" class="delete-button" title="Excluir Voluntário"><i
+                    class="fas fa-trash"></i> </button>
+        </td>
+    `
+    tableBody.appendChild(newRow)
+
+}
+
+//Função para limpar os dados da tabela sempre que criado uma nova escola
+
+const clearTable = () => {
+    const rows = document.querySelectorAll('#table-school>tbody tr')
+    rows.forEach(row => row.parentElement.removeChild(row))
+}
+
 //Função para atualizar a tabela assim que cadastrar uma nova escola
-const updateTable = () => {
-    const dataSchool = 
+export const updateTable = async () => {
+    const dataSchool = await getSchool();
+    clearTable()
+    dataSchool.forEach(createRow())
 }
 
 
