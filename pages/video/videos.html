@@ -1,5 +1,5 @@
 <div class="register-videos">
-    <form action="" method="post">
+    <form action="" method="post" id="form-videos">
         <div class="texts-input-data">
             <input type="text" placeholder="Nome do Vídeo" class="text-input" id="nome-video">
             <input type="text" placeholder="Descrição do Vídeo" class="text-input" id="desc-video">
@@ -39,9 +39,9 @@
                 <span class="modal-close" id="modalClose">&#10006;</span>
             </header>
             <form class="modal-form">
-                <input type="text" class="modal-field" placeholder="Nome do vídeo">
-                <input type="email" class="modal-field" placeholder="Descrição do vídeo">
-                <input type="text" class="modal-field" placeholder="URL do Youtube">
+                <input type="text" class="modal-field" placeholder="Nome do vídeo" required>
+                <input type="email" class="modal-field" placeholder="Descrição do vídeo" required>
+                <input type="text" class="modal-field" placeholder="URL do Youtube" required>
             </form>
             <footer class="modal-footer">
                 <button class="button save" id="save-edit">Salvar</button>

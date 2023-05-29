@@ -1,52 +1,69 @@
-//Função para criar os dados dinamicamente da tabela
-const createRow = (school, index) => {
-    const tableBody = document.querySelector('#table-school>tbdoy') 
+const getSchool = async () => {
+    const url = 'http://localhost:8080/v1/cultural-path/escola'    
+    const response = await fetch(url)
+    const school = await response.json()
+    console.log(school.dadosEscolas);
+    return school.dadosEscolas;
+}
 
-    const newRow = document.createElement('tr').classList.add('fields-table-main')
+
+const getDataSchool = async () => {
+    const dataSchool = await getSchool();
+    let listValues = []
+    let jsonSchool = {}
+
+    const values = dataSchool.map(data => {
+        jsonSchool.id = data.escola.id,
+        jsonSchool.nome = data.escola.nome,
+        jsonSchool.cnpj =  data.escola.cnpj
+        jsonSchool.telefone = data.escola.telefone,
+        jsonSchool.email = data.escola.email,
+        jsonSchool.responsavel = data.escola.responsavel,
+        jsonSchool.cep = data.endereco.map(element => {
+            return element.cep
+        })
+        listValues.push(jsonSchool)
+    })
+    return listValues
+}
+
+
+const createRow = (school) => {
+    const tableBody = document.getElementById('tbody-school');
+    console.log(tableBody);
+
+    const newRow = document.createElement('tr')
+    newRow.classList.add("fields-table-main")
 
     newRow.innerHTML = `
         <td>${school.nome}</td>
         <td>${school.cnpj}</td>
         <td>${school.telefone}</td>
         <td>${school.email}</td>
-        <td>${school.resposavel}</td>
+        <td>${school.responsavel}</td>
         <td class="field-table-main">${school.cep}</td>
         <td>
-            <button id="edit-school-${index}" class="edit-button" title="Editar Voluntário"><i
+            <button id="edit-school-${school.id}" class="edit-button" title="Editar Voluntário"><i
                     class="fas fa-edit"></i></button>
-            <button id="delete-school-${index}" class="delete-button" title="Excluir Voluntário"><i
+            <button id="delete-school-${school.id}" class="delete-button" title="Excluir Voluntário"><i
                     class="fas fa-trash"></i></button>
         </td>
     `
-    tableBody.appendChild(newRow)
+    tableBody.append(newRow)
 
 }
 
-//Função para limpar os dados da tabela sempre que criado uma nova escola
 const clearTable = () => {
     const rows = document.querySelectorAll('#table-school>tbody tr')
     rows.forEach(row => row.parentElement.removeChild(row))
 }
-
-//Função para atualizar a tabela assim que cadastrar uma nova escola
+ 
 export const updateTable = async () => {
-    const dataSchool = await getSchool();
+    const dataSchool = await getDataSchool();
     clearTable()
     dataSchool.forEach(createRow)
-}
  
-
-//Função para carregar todas as escolas cadastradas no sistema
-export const getSchool = async () => {
-    const url = 'http://localhost:8080/v1/cultural-path/escolas'
-    const respose = await fetch(url)
-    const school = respose.json()
-    return {
-        nome: school.escola.nome,
-        cnpj: school.escola.cnpj,
-        telefone: school.escola.telefone,
-        email: school.escola.email,
-        resposavel: school.escola.resposavel,
-        cep: school.endereco.cep
-    }
 }
+
+
+

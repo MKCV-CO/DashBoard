@@ -12,6 +12,8 @@ const getValuesForm = () => {
             },
             endereco: {
                 cep: document.getElementById('cep-escola').value,
+                complemento: "null",
+                numero: document.getElementById('numero-escola').value,
                 logradouro:  document.getElementById('logradouro-escola').value,
                 bairro:  document.getElementById('bairro-escola').value,
                 cidade:  document.getElementById('cidade-escola').value,
@@ -27,15 +29,17 @@ const getValuesForm = () => {
 }
 
 const clearFields = () => {
-    const fields = document.querySelectorAll('.modal-field')
+    const fields = document.querySelectorAll('.text-input')
     fields.forEach(field => {
         field.value = ""
     })
-    return fields
 }
+
+
 
 export const postSchool = async () => {
     const dataBody = getValuesForm()
+    
 
     const initPost = {
         method: 'POST',
@@ -45,10 +49,12 @@ export const postSchool = async () => {
         body: JSON.stringify(dataBody)
     }
 
+    console.log(initPost.body);
+
     const url = 'http://localhost:8080/v1/cultural-path/escola';
-    const respose = await fetch(url, initPost);
+    const respose = await fetch(url, initPost); 
     const school = await respose.json()
+    alert('Escola adicionada no sistema!');
     clearFields()
-    alert('Escola adicionada no Banco de Dados!');
     return school;
 }

@@ -5,8 +5,8 @@ import { postSchool } from "./postSchool.js"
 
 export const modalClass = () => {
     const openModal = () => document.getElementById('modal')
-        .classList.add('active-class')
-
+    .classList.add('active-class')
+    
     const closeModal = () => document.getElementById('modal')
         .classList.remove('active-class')
 
@@ -34,9 +34,13 @@ export const modalClass = () => {
         fillFields(school)
     }
 
-    document.getElementById('edit-school').addEventListener('click', openModal)
+    
     document.getElementById('cancel-edit').addEventListener('click', closeModal)
     document.getElementById('modalClose').addEventListener('click', closeModal)
     document.querySelector('#table-school>tbody').addEventListener('click', editDelete)
+    document.getElementById('register-school').addEventListener('click', async () => {
+        postSchool(),
+        updateTable()
+    })
 
 } 

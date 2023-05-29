@@ -3,18 +3,21 @@
     <form action="" method="post" id="form-register">
         <div class="texts-input-data">
             <i class="fas fa-school icon-escola"></i>
-            <input  id="nome-escola"  type="text" placeholder="Nome da Escola" class="text-input" required>
+            <input id="nome-escola" type="text" placeholder="Nome da Escola" class="text-input" required>
             <i class="fas fa-address-card icon-card"></i>
-            <input  id="cnpj-escola" type="text" placeholder="CNPJ" class="text-input" required>
+            <input id="cnpj-escola" type="text" placeholder="CNPJ" class="text-input" required>
             <i class="fas fa-phone icon-telefone"></i>
             <input id="telefone-escola" type="text" placeholder="Telefone" class="text-input" required>
             <i class="fas fa-envelope icon-email"></i>
-            <input id="email-escola" type="email" name="" id="email-escola" placeholder="Email Escola" class="text-input" required>
+            <input id="email-escola" type="email" name="" id="email-escola" placeholder="Email Escola"
+                class="text-input" required>
             <i class="fas fa-user icon-voluntario"></i>
-            <input id="responsavel-escola" type="text" name="" id="responsavel" placeholder="Responsavel" class="text-input" required>
+            <input id="responsavel-escola" type="text" name="" id="responsavel" placeholder="Responsavel"
+                class="text-input" required>
         </div>
         <div class="texts-input-adress">
             <input type="text" name="" id="cep-escola" placeholder="CEP" class="text-input" required>
+            <input type="text" name="" id="numero-escola" placeholder="Numero" class="text-input" required>
             <input type="text" name="" id="logradouro-escola" placeholder="Logradouro" class="text-input" disabled="">
             <input type="text" name="" id="bairro-escola" placeholder="Bairro" class="text-input" disabled="">
             <input type="text" name="" id="cidade-escola" placeholder="Cidade" class="text-input" disabled="">
@@ -36,21 +39,7 @@
                 <th>Ação</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="fields-table-main">
-                <td>SENAI Jandira</td>
-                <td>12.345.678/0001-00</td>
-                <td>40028922</td>
-                <td>senaijandira@senai.com</td>
-                <td>Lucília</td>
-                <td class="field-table-main">06654270</td>
-                <td>
-                    <button id="edit-school" class="edit-button" title="Editar Voluntário"><i
-                            class="fas fa-edit"></i></button>
-                    <button id="delete-school" class="delete-button" title="Excluir Voluntário"><i
-                            class="fas fa-trash"></i> </button>
-                </td>
-            </tr>
+        <tbody id="tbody-school">
         </tbody>
     </table>
     <div class="modal" id="modal">
@@ -68,6 +57,7 @@
                 <input type="text" class="modal-field" placeholder="CEP" id="edit-cep-escola">
                 <input type="text" name="" id="edit-logradouro-escola" placeholder="Logradouro" class="modal-field"
                     disabled="">
+                <input type="text" class="modal-field" placeholder="Número" id="edit-numero-escola">
                 <input type="text" name="" id="edit-bairro-escola" placeholder="Bairro" class="modal-field" disabled="">
                 <input type="text" name="" id="edit-cidade-escola" placeholder="Cidade" class="modal-field" disabled="">
                 <input type="text" name="" id="edit-estado-escola" placeholder="Estado" class="modal-field" disabled="">

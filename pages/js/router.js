@@ -1,7 +1,10 @@
 'use strict'
 
 import { searchAdress } from './escola/viacep.js'
-import { modalClass } from './escola/modal.js';
+import { modalClass } from './escola/modalSchool.js';
+import { modalVideo } from './video/modalVideo.js';
+
+
 
 const routes = {
     "/": "../pages/index.html",
@@ -24,10 +27,12 @@ export const route = async() => {
 
 }
 
-const pathName = (path) => {
+const pathName = async (path) => {
     if(path == '/escolas'){
         searchAdress(),
         modalClass()
+    }else if(path == '/video'){
+        modalVideo()
     }
 }
  
