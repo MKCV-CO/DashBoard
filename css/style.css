@@ -8,10 +8,15 @@
 
 body{
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-areas: "form image";
     gap: 50px;
+}
+
+.teste{
+    display: flex;
+    justify-content: end;
 }
 
 

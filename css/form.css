@@ -1,5 +1,9 @@
 .login-box{
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
 }
 
 form{
@@ -8,6 +12,7 @@ form{
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+    grid-area: form;
 }
 
 .login-box .user-box {
@@ -44,6 +49,7 @@ form{
     left: 0;
     color: black;
     font-size: 12px;
+    
 }
 
 .form-login{
