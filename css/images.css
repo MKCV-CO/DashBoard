@@ -1,16 +1,24 @@
 .red-polygon{
     display: flex;
     align-items: center;
-    justify-content: center ;
-    position: relative;
-    width: 50%;
+    justify-content: center;
+    background: url(.././images/red-polygon.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
 }
 
 .text-image{
-    position: absolute;
-    top: 210px;
-    right: 250px;
-    left: 240px;
-    font-size: 20px;
+    width: 30%;
+    padding-bottom: 5%;
+    grid-area: image;
+    font-size: 1.5rem;
     color: white;
+}
+
+.circle-blue{
+    width: 50%;
+}
+.image-yellow{
+    width: 50%;
 }
