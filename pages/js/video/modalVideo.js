@@ -1,6 +1,6 @@
 import { postVideo } from '../video/postVideo.js';
 
-export const modalVideo = () => {
+export const videoClass = async () => {
     const openModal = () => document.getElementById('modal')
         .classList.add('active-class')
 
@@ -8,7 +8,7 @@ export const modalVideo = () => {
         .classList.remove('active-class')
 
 
-    document.getElementById('edit-video').addEventListener('click', openModal)
+    
     document.getElementById('cancel-edit').addEventListener('click', closeModal)
     document.getElementById('modalClose').addEventListener('click', closeModal)
     document.getElementById('btn_register_video').addEventListener('click', async () => {

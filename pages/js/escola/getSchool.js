@@ -1,3 +1,7 @@
+'use strict'
+
+import { clearTable } from "../components.js"
+
 const getSchool = async () => {
     const url = 'http://localhost:8080/v1/cultural-path/escola'    
     const response = await fetch(url)
@@ -53,10 +57,7 @@ const createRow = (school) => {
 
 }
 
-const clearTable = () => {
-    const rows = document.querySelectorAll('#table-school>tbody tr')
-    rows.forEach(row => row.parentElement.removeChild(row))
-}
+
  
 export const updateTable = async () => {
     const dataSchool = await getDataSchool();

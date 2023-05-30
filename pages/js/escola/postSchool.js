@@ -1,3 +1,6 @@
+import { clearFields } from "../components.js"
+
+
 const isValidFields = () => document.getElementById('form-register').reportValidity()
 
 const getValuesForm = () => {
@@ -21,25 +24,16 @@ const getValuesForm = () => {
             }
         }
         return newSchool
-    }
+   }    
     else{
         return false
     }
     
 }
 
-const clearFields = () => {
-    const fields = document.querySelectorAll('.text-input')
-    fields.forEach(field => {
-        field.value = ""
-    })
-}
-
-
 
 export const postSchool = async () => {
     const dataBody = getValuesForm()
-    
 
     const initPost = {
         method: 'POST',
@@ -49,8 +43,6 @@ export const postSchool = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    console.log(initPost.body);
-
     const url = 'http://localhost:8080/v1/cultural-path/escola';
     const respose = await fetch(url, initPost); 
     const school = await respose.json()
@@ -58,3 +50,4 @@ export const postSchool = async () => {
     clearFields()
     return school;
 }
+

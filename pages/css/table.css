@@ -13,6 +13,11 @@
     text-align: center;
 }
 
+.fields-table-header th{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .fields-table-main{
     width: 100%;
     color: black;
@@ -31,25 +36,29 @@
 }
 
 .fields-table-main td:last-child{
-    width: 100px;
+    width: 200px;
 }
 
 
 .edit-button, .delete-button{
     border-style: none;
-    height: 30px;
-    width: 30px;
     color: black;
+    width: fit-content;
     text-align: center;
+    font-size: 16px;
     cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .edit-button{
     background-color: #28A745;
+    
 }
 
 .delete-button{
     background-color: #E82424;
+
 }
 
 .fields-table-main td::-webkit-scrollbar-track {

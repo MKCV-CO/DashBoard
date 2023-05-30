@@ -1,4 +1,4 @@
-<div class="register-videos">
+<div class="register-videos" id="register-videos">
     <form action="" method="post" id="form-videos">
         <div class="texts-input-data">
             <input type="text" placeholder="Nome do Vídeo" class="text-input" id="nome-video">
@@ -9,7 +9,7 @@
     <div class="button-area">
         <button id="btn_register_video" class="btn-register-video">Cadastrar novo Video</button>
     </div>
-    <table class="records">
+    <table class="records" id="table_videos">
         <thead>
             <tr class="fields-table-header">
                 <th>ID Vídeo</th>
@@ -19,20 +19,10 @@
                 <th>Ações</th>
             </tr>   
         </thead>
-        <tbody>
-            <tr class="fields-table-main">
-                <td>0</td>
-                <td>Conscientização das Drogas</td>
-                <td>Desenho apresentado para turmas do SENAI Jandira para conscientização das drogas no mundo atual</td>
-                <td>https://www.youtube.com/watch?v=YVbbvZEMLFI&pp=ygUcY29uc2NpZW50aXphw6fDo28gZGFzIGRyb2dhcw%3D%3D </td>
-                <td>
-                    <button id="edit-video" class="edit-button" title="Editar Video"><i class="fas fa-edit"></i></button>
-                    <button id="delete-video" class="delete-button" title="Excluir Video"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
+        <tbody id="tbody-videos">
         </tbody>
     </table>
-    <div class="modal" id="modal">
+    <div class="modal" id="modal-video">
         <div class="modal-content">
             <header class="modal-header">
                 <h2 style="padding-left: 20px; padding-top: 10px;">Editar dados do video</h2>
