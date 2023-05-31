@@ -1,6 +1,7 @@
 'use strict'
 
 import { editVideo, modalVideo } from "./putSchool.js";
+import { excludeVideo } from "./deleteVideo.js";
 
 
 export const getVideos = async () => {
@@ -30,13 +31,14 @@ export const getDataVideos = async () => {
 
 
 const editDelete = (event) => {
-    if (event.target.classList.contains('edit-button')) {
+    if (event.target.tagName == 'BUTTON' || event.target.tagName == 'I') {
         const [action, index] = event.target.dataset.number.split('-')
+        localStorage.setItem('clickVideo', index)
         if (action == 'edit') {
             modalVideo();
             editVideo(index);
         } else if (action == 'delete') {
-            console.log(`delete video ${index}`);
+            excludeVideo(index)
         }
     }
 }
