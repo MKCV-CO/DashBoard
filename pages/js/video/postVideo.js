@@ -1,11 +1,9 @@
 'use strict'
 
-import { clearFields } from "../components.js"
 import { createRowVideo } from "./getVideos.js"
 import { getDataVideos } from "./getVideos.js"
 
 const isValidFields = () => document.getElementById('form-videos').reportValidity()
-
 
 const getValuesForm = () => {
     if (isValidFields()) {
@@ -18,7 +16,6 @@ const getValuesForm = () => {
     } else {
         return false
     }
-
 }
 
 const clearTable = () => {
@@ -26,7 +23,7 @@ const clearTable = () => {
     rows.forEach(row => row.parentNode.removeChild(row))
 }
 
-const updateTableVideos = async () => {
+export const updateTableVideos = async () => {
     const dataVideos = await getDataVideos();
     clearTable()
     dataVideos.forEach(createRowVideo)
@@ -49,6 +46,5 @@ export const postVideo = async () => {
     const video = await respose.json()
     alert('Video adicionada no sistema!');
     await updateTableVideos()
-    clearFields()
     return video;
 }

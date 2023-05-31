@@ -1,34 +1,44 @@
 'use strict'
 
-import { editDelete } from "./editDelete.js";
+import { editVideo, modalVideo } from "./putSchool.js";
 
 
-
-const getVideos = async () => {
+export const getVideos = async () => {
     const url = 'http://localhost:8080/v1/cultural-path/videos-infantil';
     const response = await fetch(url);
     const videos = await response.json();
-    if(videos.status == '200'){
+    if (videos.status == '200') {
         return videos.videos;
-    }else{
+    } else {
         return 'Not Found'
     }
-  
 }
-
 
 export const getDataVideos = async () => {
     const dataVideos = await getVideos();
 
     dataVideos.map(element => {
         return [
-         element.id,
-         element.titulo,
-         element.descricao,
-         element.url
-     ]
+            element.id,
+            element.titulo,
+            element.descricao,
+            element.url
+        ]
     })
-     return dataVideos
+    return dataVideos
+}
+
+
+const editDelete = (event) => {
+    if (event.target.classList.contains('edit-button')) {
+        const [action, index] = event.target.dataset.number.split('-')
+        if (action == 'edit') {
+            modalVideo();
+            editVideo(index);
+        } else if (action == 'delete') {
+            console.log(`delete video ${index}`);
+        }
+    }
 }
 
 export const createRowVideo = (video) => {
@@ -52,8 +62,8 @@ export const createRowVideo = (video) => {
     tableBody.append(newRow)
 }
 
-export const createTableVideos = async() => {
-    const allVideos =  await getDataVideos();
+export const createTableVideos = async () => {
+    const allVideos = await getDataVideos();
     allVideos.forEach(createRowVideo)
 }
 

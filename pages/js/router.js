@@ -3,7 +3,8 @@
 import { searchAdress } from './escola/viacep.js'
 import { modalClass } from './escola/modalSchool.js';
 import { createTableVideos } from './video/getVideos.js';
-import { videoClass } from './video/modalVideo.js';
+import { registerVideo } from './video/registerSchool.js';
+import { updateVideo } from './video/updateSchool.js';
 
 
 const routes = {
@@ -33,7 +34,8 @@ const pathName = async (path) => {
         modalClass()
     }else if(path == '/video'){
         createTableVideos(),
-        videoClass()
+        registerVideo(),
+        updateVideo()
     }
 }
  

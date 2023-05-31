@@ -1,9 +1,9 @@
 <div class="register-videos" id="register-videos">
     <form action="" method="post" id="form-videos">
         <div class="texts-input-data">
-            <input type="text" placeholder="Nome do Vídeo" class="text-input" id="nome-video">
-            <input type="text" placeholder="Descrição do Vídeo" class="text-input" id="desc-video">
-            <input type="text" placeholder="URL do Youtube" class="text-input" id="url-video">
+            <input type="text" placeholder="Nome do Vídeo" class="text-input" id="nome-video" required>
+            <input type="text" placeholder="Descrição do Vídeo" class="text-input" id="desc-video" required>
+            <input type="text" placeholder="URL do Youtube" class="text-input" id="url-video" required>
         </div>
     </form>
     <div class="button-area">
@@ -29,9 +29,9 @@
                 <span class="modal-close" id="modalClose">&#10006;</span>
             </header>
             <form class="modal-form">
-                <input type="text" class="modal-field" placeholder="Nome do vídeo" required>
-                <input type="email" class="modal-field" placeholder="Descrição do vídeo" required>
-                <input type="text" class="modal-field" placeholder="URL do Youtube" required>
+                <input type="text" class="modal-field" data-index="new" placeholder="Nome do vídeo" required id="titulo-video">
+                <input type="email" class="modal-field" data-index="new" placeholder="Descrição do vídeo" required id="desc-edit-video">
+                <input type="text" class="modal-field" data-index="new" placeholder="URL do Youtube" required id="url-edit-video">
             </form>
             <footer class="modal-footer">
                 <button class="button save" id="save-edit">Salvar</button>
