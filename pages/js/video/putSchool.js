@@ -3,7 +3,6 @@
 import { getVideos } from "./getVideos.js";
 import { updateTableVideos } from "./postVideo.js";
 
-
 const fillFields = (video) => {
     const idVideo = video.id
     localStorage.setItem('db_video', idVideo);

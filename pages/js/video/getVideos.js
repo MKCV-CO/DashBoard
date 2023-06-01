@@ -34,11 +34,12 @@ const editDelete = (event) => {
     if (event.target.tagName == 'BUTTON' || event.target.tagName == 'I') {
         const [action, index] = event.target.dataset.number.split('-')
         localStorage.setItem('clickVideo', index)
+        localStorage.setItem('deletedVideo', index)
         if (action == 'edit') {
             modalVideo();
             editVideo(index);
         } else if (action == 'delete') {
-            excludeVideo(index)
+            excludeVideo(index);
         }
     }
 }
