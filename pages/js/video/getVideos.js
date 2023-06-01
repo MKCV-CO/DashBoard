@@ -18,6 +18,7 @@ export const getVideos = async () => {
 export const getDataVideos = async () => {
     const dataVideos = await getVideos();
 
+
     dataVideos.map(element => {
         return [
             element.id,
@@ -26,6 +27,7 @@ export const getDataVideos = async () => {
             element.url
         ]
     })
+    console.log(dataVideos);
     return dataVideos
 }
 

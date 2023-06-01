@@ -1,10 +1,11 @@
 'use strict'
 
 import { searchAdress } from './escola/viacep.js'
-import { modalClass } from './escola/modalSchool.js';
 import { createTableVideos } from './video/getVideos.js';
-import { registerVideo } from './video/registerSchool.js';
-import { updateVideo } from './video/updateSchool.js';
+import { registerVideo } from './video/registerVideo.js';
+import { updateVideo } from './video/updateVideo.js';
+import { createTableSchool } from './escola/getSchool.js';
+import { registerSchool } from './escola/registerSchool.js';
 
 
 const routes = {
@@ -31,7 +32,8 @@ export const route = async() => {
 const pathName = async (path) => {
     if(path == '/escolas'){
         searchAdress(),
-        modalClass()
+        createTableSchool(),
+        registerSchool()
     }else if(path == '/video'){
         createTableVideos(),
         registerVideo(),

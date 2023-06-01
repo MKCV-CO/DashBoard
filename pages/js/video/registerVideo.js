@@ -1,4 +1,4 @@
-import { postVideo } from '../video/postVideo.js';
+import { postVideo } from './postVideo.js';
 import { clearFields } from "../components.js"
 
 export const registerVideo = async () => {

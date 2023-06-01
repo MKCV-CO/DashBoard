@@ -1,4 +1,4 @@
-import { clearFields } from "../components.js"
+import { createRowSchool, getDataSchool } from "./getSchool.js"
 
 
 const isValidFields = () => document.getElementById('form-register').reportValidity()
@@ -23,6 +23,7 @@ const getValuesForm = () => {
                 estado: document.getElementById('estado-escola').value
             }
         }
+        console.log("Dados chegando no input: " + newSchool);
         return newSchool
    }    
     else{
@@ -31,9 +32,22 @@ const getValuesForm = () => {
     
 }
 
+const clearTable = () => {
+    const rows = document.querySelectorAll(`#table_school>tbody tr`)
+    rows.forEach(row => row.parentNode.removeChild(row))
+}
+
+export const updateTableSchool = async() =>{
+    const dataSchool = await getDataSchool()
+    console.log('Dados no updateTable: ' + dataSchool);
+    clearTable()
+    dataSchool.forEach(createRowSchool)
+}
+
 
 export const postSchool = async () => {
     const dataBody = getValuesForm()
+    console.log('Dados no Body: ' + dataBody);
 
     const initPost = {
         method: 'POST',
@@ -47,7 +61,7 @@ export const postSchool = async () => {
     const respose = await fetch(url, initPost); 
     const school = await respose.json()
     alert('Escola adicionada no sistema!');
-    clearFields()
+    await updateTableSchool()
     return school;
 }
 
