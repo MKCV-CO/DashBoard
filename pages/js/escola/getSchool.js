@@ -1,5 +1,7 @@
 'use strict'
 
+import { editSchool, modalSchool } from "./putSchool.js"
+
 const getSchool = async () => {
     const url = 'http://localhost:8080/v1/cultural-path/escola'
     const response = await fetch(url)
@@ -24,8 +26,10 @@ export const getDataSchool = async () => {
             telefone: data.escola.telefone,
             email: data.escola.email,
             responsavel: data.escola.responsavel,
-            cep: data.endereco.map(element => element.cep)
+            cep: data.endereco.map(element => element.cep),
+            id_endereco: data.endereco.map(element => element.id_endereco)
         }
+        console.log(data);
         listValues.push(jsonSchool)
     })
     return listValues
@@ -34,10 +38,9 @@ export const getDataSchool = async () => {
 const editDelete = (event) => {
     if (event.target.tagName == 'BUTTON') {
         const [action, index] = event.target.dataset.school.split('-')
-        console.log(action + `-${index}`);
-
         if (action == 'edit') {
-
+            modalSchool()
+            editSchool(index)
         } else if (action == 'delete') {
 
         }

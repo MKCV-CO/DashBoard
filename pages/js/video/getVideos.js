@@ -1,6 +1,6 @@
 'use strict'
 
-import { editVideo, modalVideo } from "./putSchool.js";
+import { editVideo, modalVideo } from "./putVideo.js";
 import { excludeVideo } from "./deleteVideo.js";
 
 

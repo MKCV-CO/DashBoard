@@ -36,4 +36,7 @@ export const searchAdress = function() {
     
     document.getElementById('edit-cep-escola').addEventListener('blur', editInputAdress)
 
+
+    
+
 }
