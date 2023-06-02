@@ -1,6 +1,6 @@
 .register-company{
     display: grid;
-    grid-template-rows:1fr;
+    grid-template-rows:100px 1fr;
     place-content: center;
 }
 

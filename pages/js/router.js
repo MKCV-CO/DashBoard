@@ -7,7 +7,8 @@ import { updateVideo } from './video/updateVideo.js';
 import { createTableSchool } from './escola/getSchool.js';
 import { registerSchool } from './escola/registerSchool.js';
 import { updateSchool } from './escola/updateSchool.js';
-
+import { createTableVoluntary } from './voluntario/getVoluntary.js';
+import { createTableCompany } from './empresa/getCompany.js';
 
 const routes = {
     "/": "../pages/index.html",
@@ -40,6 +41,10 @@ const pathName = async (path) => {
         createTableVideos(),
         registerVideo(),
         updateVideo()
+    }else if(path == '/voluntario'){
+        createTableVoluntary()
+    }else if(path == '/empresa'){
+        createTableCompany()
     }
 }
  
