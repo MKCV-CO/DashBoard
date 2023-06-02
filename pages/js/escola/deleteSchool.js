@@ -4,7 +4,9 @@ import { getDataSchool } from "./getSchool.js";
 import { updateTableSchool } from "./postSchool.js";
 
 export const excludeSchool = async () => {
-    const idVideo = localStorage.getItem('deletedSchool')                                                                                                                                   
+    const idSchool = localStorage.getItem('deletedSchool')    
+    console.log(idSchool);
+                                                                                                                                   
     const dataBody = await getDataSchool()
     console.log(dataBody);
    
@@ -17,11 +19,16 @@ export const excludeSchool = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = `http://localhost:8080/v1/cultural-path/videos-infantil/${idVideo}`;
-    const respose = await fetch(url, initDelete);
-    const video = await respose.json()
+    console.log(initDelete.body);
+    
+
+    const url = `http://localhost:8080/v1/cultural-path/escola/${idSchool}`;
+    console.log(url);
+    
+    const response = await fetch(url, initDelete);
+    const video = await response.json()
     alert('Video deletado no sistema!');
-    await updateTableSchool()
+    updateTableSchool()
     return video;
 }
 

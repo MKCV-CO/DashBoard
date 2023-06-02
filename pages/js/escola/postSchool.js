@@ -23,7 +23,6 @@ const getValuesForm = () => {
                 estado: document.getElementById('estado-escola').value
             }
         }
-        console.log("Dados chegando no input: " + newSchool);
         return newSchool
    }    
     else{
@@ -39,7 +38,6 @@ const clearTable = () => {
 
 export const updateTableSchool = async() =>{
     const dataSchool = await getDataSchool()
-    console.log(dataSchool);
     clearTable()
     dataSchool.forEach(createRowSchool)
 }
@@ -47,7 +45,6 @@ export const updateTableSchool = async() =>{
 
 export const postSchool = async () => {
     const dataBody = getValuesForm()
-    console.log('Dados no Body: ' + dataBody);
 
     const initPost = {
         method: 'POST',
@@ -61,7 +58,7 @@ export const postSchool = async () => {
     const respose = await fetch(url, initPost); 
     const school = await respose.json()
     alert('Escola adicionada no sistema!');
-    await updateTableSchool()
+    updateTableSchool()
     return school;
 }
 

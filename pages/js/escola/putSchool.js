@@ -32,6 +32,9 @@ export const editSchool = async (index) => {
     });
 
     const detailVideo = changeIndex[index];
+    console.log(detailVideo);
+    
+    
     fillFields(detailVideo)
 }
 
@@ -80,8 +83,7 @@ const dataSchool = () => {
     const stateSchool = document.getElementById('edit-estado-escola').value
     const numberSchool = document.getElementById('edit-numero-escola').value
     const id_endereco = localStorage.getItem('id_endereco')
-    const id_cidade = localStorage.getItem('id_cidade')
-    const id_estado = localStorage.getItem('id_estado')
+
 
     if (dataSchool) {
         const putSchool = {
@@ -97,12 +99,9 @@ const dataSchool = () => {
                 cep: cepSchool,
                 numero: numberSchool,
                 cidade: citySchool,
-                complemento: 'null',
                 bairro: hoodSchool,
                 estado: stateSchool,
-                id_endereco: id_endereco,
-                id_estado: id_estado,
-                id_cidade: id_cidade
+                id_endereco: id_endereco
             }
         }
         return putSchool
@@ -113,6 +112,8 @@ const dataSchool = () => {
 
 export const putSchool = async () => {
     const dataBody = dataSchool()
+    console.log(dataBody);
+    
 
     const idSchool =  localStorage.getItem('db_school');
 
@@ -128,7 +129,7 @@ export const putSchool = async () => {
     const respose = await fetch(url, initPut);
     const video = await respose.json()
     alert('Video atualizado no sistema!');
-    await updateTableSchool()
+    updateTableSchool()
     return video;
 }
 

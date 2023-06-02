@@ -45,6 +45,6 @@ export const postVideo = async () => {
     const respose = await fetch(url, initPost);
     const video = await respose.json()
     alert('Video adicionada no sistema!');
-    await updateTableVideos()
+    updateTableVideos()
     return video;
 }

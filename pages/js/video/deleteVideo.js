@@ -19,7 +19,7 @@ export const excludeVideo = async () => {
     const respose = await fetch(url, initDelete);
     const video = await respose.json()
     alert('Video deletado no sistema!');
-    await updateTableVideos()
+    updateTableVideos()
     return video;
 }
 
