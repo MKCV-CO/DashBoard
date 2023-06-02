@@ -39,7 +39,7 @@ const clearTable = () => {
 
 export const updateTableSchool = async() =>{
     const dataSchool = await getDataSchool()
-    console.log('Dados no updateTable: ' + dataSchool);
+    console.log(dataSchool);
     clearTable()
     dataSchool.forEach(createRowSchool)
 }

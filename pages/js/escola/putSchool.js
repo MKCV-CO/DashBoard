@@ -6,9 +6,13 @@ import { searchAdress } from "./viacep.js";
 
 const fillFields = async (school) => {
     const idSchool = school.id
-    const id_endereco =  school.id_endereco[0]
+    const id_endereco =  school.id_endereco
+    const id_cidade = school.id_cidade
+    const id_estado =  school.id_estado
 
     localStorage.setItem('id_endereco', id_endereco)
+    localStorage.setItem('id_cidade', id_cidade)
+    localStorage.setItem('id_estado', id_estado)
     localStorage.setItem('db_school', idSchool);
 
     document.getElementById('edit-nome-escola').value = school.nome;
@@ -16,8 +20,9 @@ const fillFields = async (school) => {
     document.getElementById('edit-cnpj-escola').value = school.cnpj;
     document.getElementById('edit-telefone-escola').value = school.telefone;
     document.getElementById('edit-responsavel-escola').value = school.responsavel;
-    const cepSchool = document.getElementById('edit-cep-escola').value = school.cep;
+    document.getElementById('edit-cep-escola').value = school.cep;
 }
+
 export const editSchool = async (index) => {
     const schools = await getDataSchool()
     const changeIndex = [];
@@ -75,6 +80,8 @@ const dataSchool = () => {
     const stateSchool = document.getElementById('edit-estado-escola').value
     const numberSchool = document.getElementById('edit-numero-escola').value
     const id_endereco = localStorage.getItem('id_endereco')
+    const id_cidade = localStorage.getItem('id_cidade')
+    const id_estado = localStorage.getItem('id_estado')
 
     if (dataSchool) {
         const putSchool = {
@@ -90,9 +97,12 @@ const dataSchool = () => {
                 cep: cepSchool,
                 numero: numberSchool,
                 cidade: citySchool,
+                complemento: 'null',
                 bairro: hoodSchool,
                 estado: stateSchool,
-                id_endereco: id_endereco 
+                id_endereco: id_endereco,
+                id_estado: id_estado,
+                id_cidade: id_cidade
             }
         }
         return putSchool
@@ -102,8 +112,8 @@ const dataSchool = () => {
 }
 
 export const putSchool = async () => {
-    const dataBody = await dataSchool()
-    console.log(dataBody);
+    const dataBody = dataSchool()
+
     const idSchool =  localStorage.getItem('db_school');
 
     const initPut = {
@@ -113,8 +123,6 @@ export const putSchool = async () => {
         },
         body: JSON.stringify(dataBody)
     }
-
-    console.log(dataBody);
 
     const url = `http://localhost:8080/v1/cultural-path/escola/${idSchool}`;
     const respose = await fetch(url, initPut);

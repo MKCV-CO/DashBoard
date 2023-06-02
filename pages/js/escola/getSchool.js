@@ -1,14 +1,13 @@
 'use strict'
 
+import { excludeSchool } from "./deleteSchool.js"
 import { editSchool, modalSchool } from "./putSchool.js"
 
 const getSchool = async () => {
     const url = 'http://localhost:8080/v1/cultural-path/escola'
     const response = await fetch(url)
     const school = await response.json()
-    console.log(school);
     return school.dadosEscolas;
-
 }
 
 
@@ -19,6 +18,8 @@ export const getDataSchool = async () => {
     let jsonSchool = {}
 
     const values = dataSchool.map(data => {
+        const adressSchool = data.endereco[0];
+        
         jsonSchool = {
             id: data.escola.id,
             nome: data.escola.nome,
@@ -26,23 +27,34 @@ export const getDataSchool = async () => {
             telefone: data.escola.telefone,
             email: data.escola.email,
             responsavel: data.escola.responsavel,
-            cep: data.endereco.map(element => element.cep),
-            id_endereco: data.endereco.map(element => element.id_endereco)
+            cep: adressSchool.cep.toString(),
+            logradouro: adressSchool.logradouro,
+            bairro: adressSchool.bairro.toString(),
+            cidade: adressSchool.cidade.toString(),
+            estado: adressSchool.estado.toString(),
+            regiao: adressSchool.regiao.toString(),
+            sigla_estado: adressSchool.sigla_estado.toString(),
+            id_endereco: adressSchool.id_endereco,
+            id_cidade: adressSchool.id_cidade,
+            id_estado: adressSchool.id_estado,
         }
-        console.log(data);
         listValues.push(jsonSchool)
     })
+    
     return listValues
 }
 
-const editDelete = (event) => {
+let nome = 'Matheus'
+
+const editDelete = async(event) => {
     if (event.target.tagName == 'BUTTON') {
         const [action, index] = event.target.dataset.school.split('-')
+        localStorage.setItem('deletedSchool', index)
         if (action == 'edit') {
             modalSchool()
-            editSchool(index)
+            await editSchool(index)
         } else if (action == 'delete') {
-
+            excludeSchool(index)
         }
     }
 }
