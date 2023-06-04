@@ -9,6 +9,7 @@ import { registerSchool } from './escola/registerSchool.js';
 import { updateSchool } from './escola/updateSchool.js';
 import { createTableVoluntary } from './voluntario/getVoluntary.js';
 import { createTableCompany } from './empresa/getCompany.js';
+import { createCalendar } from './calendario.js/calendar.js';
 
 const routes = {
     "/": "../pages/index.html",
@@ -45,6 +46,8 @@ const pathName = async (path) => {
         createTableVoluntary()
     }else if(path == '/empresa'){
         createTableCompany()
+    }else if(path ==  '/calendario'){
+        createCalendar()
     }
 }
  
