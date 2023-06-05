@@ -1,6 +1,7 @@
+import { getSchool } from "./methods.js";
 import { monthsAll } from "./months.js";
 
-export const createCalendar = () => {
+export const createCalendar = async () => {
 
     const calendar = document.querySelector(".calendar"),
         date = document.querySelector(".date"),
@@ -22,7 +23,6 @@ export const createCalendar = () => {
         addEventSubmit = document.querySelector(".add-event-btn ");
 
     let today = new Date();
-
   
     let activeDay;
     let month = today.getMonth();
@@ -33,7 +33,6 @@ export const createCalendar = () => {
     const eventsArr = [];
     getEvents();
 
-    //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
     function initCalendar() {
         const firstDay = new Date(year, month, 1);
         const lastDay = new Date(year, month + 1, 0);
@@ -182,7 +181,6 @@ export const createCalendar = () => {
         eventDate.innerHTML = date + " " + months[month] + " " + year;
     }
 
-    //function update events when a day is active
     function updateEvents(date) {
         let events = "";
         eventsArr.forEach((event) => {
@@ -356,5 +354,37 @@ export const createCalendar = () => {
         }
         
     }
+
+
+    const createFilter = function(school) {
+        console.log(school);
+        const selectSchool = document.getElementById('selectSchool')
+        const schoolId = document.createElement('option')
+    
+        schoolId.value = school[0]
+        schoolId.textContent = `${school[1]} - ${school[0]}`
+    
+        selectSchool.append(schoolId)
+        return selectSchool
+    };
+    const getSelected = async function() {
+    
+        const comboBoxSchool = document.getElementById('selectSchool')
+        const schools =  await getSchool()
+        const teste = schools.map(i => {
+            return [
+                i.escola.id,
+                i.escola.nome
+            ]
+        })
+    
+        const select = document.getElementById('school')
+        const onlySchool = teste.map(createFilter)
+    
+        select.replaceChildren(...onlySchool)
+    
+    }
+
+    await getSelected()
 
 }
