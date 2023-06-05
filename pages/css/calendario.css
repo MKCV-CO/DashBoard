@@ -311,14 +311,21 @@
   .events .event:hover i {
     color: #fff;
   }
-  .events .event .event-time {
+
+  .event-time-to{
+    visibility: hidden;
+    background-color: none;
+
+  }
+
+  .events .event .event-objective {
     font-size: 0.8rem;
     font-weight: 400;
     color: #878895;
     margin-left: 15px;
     pointer-events: none;
   }
-  .events .event:hover .event-time {
+  .events .event:hover .event-objective {
     color: #fff;
   }
   /* add tick in event after */

@@ -17,12 +17,13 @@ export const createCalendar = () => {
         addEventWrapper = document.querySelector(".add-event-wrapper "),
         addEventCloseBtn = document.querySelector(".close "),
         addEventTitle = document.querySelector(".event-name "),
-        addEventFrom = document.querySelector(".event-time-from "),
-        addEventTo = document.querySelector(".event-time-to "),
+        addObjective = document.querySelector(".event-time-from "),
+        addDate = document.querySelector(".event-time-to "),
         addEventSubmit = document.querySelector(".add-event-btn ");
 
     let today = new Date();
 
+  
     let activeDay;
     let month = today.getMonth();
     let year = today.getFullYear();
@@ -31,7 +32,6 @@ export const createCalendar = () => {
 
     const eventsArr = [];
     getEvents();
-    console.log(eventsArr);
 
     //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
     function initCalendar() {
@@ -172,36 +172,7 @@ export const createCalendar = () => {
         initCalendar();
     });
 
-    dateInput.addEventListener("input", (e) => {
-        dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
-        if (dateInput.value.length === 2) {
-            dateInput.value += "/";
-        }
-        if (dateInput.value.length > 7) {
-            dateInput.value = dateInput.value.slice(0, 7);
-        }
-        if (e.inputType === "deleteContentBackward") {
-            if (dateInput.value.length === 3) {
-                dateInput.value = dateInput.value.slice(0, 2);
-            }
-        }
-    });
 
-    gotoBtn.addEventListener("click", gotoDate);
-
-    function gotoDate() {
-        console.log("here");
-        const dateArr = dateInput.value.split("/");
-        if (dateArr.length === 2) {
-            if (dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
-                month = dateArr[0] - 1;
-                year = dateArr[1];
-                initCalendar();
-                return;
-            }
-        }
-        alert("Invalid Date");
-    }
 
     //function get active day day name and date and update eventday eventdate
     function getActiveDay(date) {
@@ -224,18 +195,18 @@ export const createCalendar = () => {
                     events += `<div class="event">
             <div class="title">
               <i class="fas fa-circle"></i>
-              <h3 class="event-title">${event.title}</h3>
+              <h3 class="event-title">${event.tema}</h3>
             </div>
-            <div class="event-time">
-              <span class="event-time">${event.time}</span>
-            </div>
+            <div class="event-objective">
+              <span class="event-objective">${event.objetivo}</span>
+            </div>  
         </div>`;
                 });
             }
         });
         if (events === "") {
             events = `<div class="no-event">
-            <h3>No Events</h3>
+            <h3>Sem eventos</h3>
         </div>`;
         }
         eventsContainer.innerHTML = events;
@@ -257,60 +228,18 @@ export const createCalendar = () => {
         }
     });
 
-    //allow 50 chars in eventtitle
-    addEventTitle.addEventListener("input", (e) => {
-        addEventTitle.value = addEventTitle.value.slice(0, 60);
-    });
-
-
-    //allow only time in eventtime from and to
-    addEventFrom.addEventListener("input", (e) => {
-        addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
-        if (addEventFrom.value.length === 2) {
-            addEventFrom.value += ":";
-        }
-        if (addEventFrom.value.length > 5) {
-            addEventFrom.value = addEventFrom.value.slice(0, 5);
-        }
-    });
-
-    addEventTo.addEventListener("input", (e) => {
-        addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
-        if (addEventTo.value.length === 2) {
-            addEventTo.value += ":";
-        }
-        if (addEventTo.value.length > 5) {
-            addEventTo.value = addEventTo.value.slice(0, 5);
-        }
-    });
-
-    //function to add event to eventsArr
+    
+    const dateLecture = `${year}-${month}-${activeDay}`
+    
     addEventSubmit.addEventListener("click", () => {
-        const eventTitle = addEventTitle.value;
-        const eventTimeFrom = addEventFrom.value;
-        const eventTimeTo = addEventTo.value;
-        if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
+        const eventTitle = addEventTitle.value; 
+        const eventObjective = addObjective.value;
+        const eventDate = dateLecture;
+        if (eventTitle === "" || eventObjective === "" || eventDate === "") {
             alert("Por favor! Preencha todos os campos!");
             return;
         }
 
-        //check correct time format 24 hour
-        const timeFromArr = eventTimeFrom.split(":");
-        const timeToArr = eventTimeTo.split(":");
-        if (
-            timeFromArr.length !== 2 ||
-            timeToArr.length !== 2 ||
-            timeFromArr[0] > 23 ||
-            timeFromArr[1] > 59 ||
-            timeToArr[0] > 23 ||
-            timeToArr[1] > 59
-        ) {
-            alert("Insercao de tempo invalida");
-            return;
-        }
-
-        const timeFrom = convertTime(eventTimeFrom);
-        const timeTo = convertTime(eventTimeTo);
 
         //check if event is already added
         let eventExist = false;
@@ -331,12 +260,17 @@ export const createCalendar = () => {
             alert("Esse evento já existe!");
             return;
         }
+
+
+        //JSON para o Banco de Dados
         const newEvent = {
-            title: eventTitle,
-            time: timeFrom + " - " + timeTo,
+            tema: eventTitle,
+            objetivo: eventObjective,
+            data_palestra: dateLecture,
         };
+
         console.log(newEvent);
-        console.log(activeDay);
+      
         let eventAdded = false;
         if (eventsArr.length > 0) {
             eventsArr.forEach((item) => {
@@ -359,13 +293,13 @@ export const createCalendar = () => {
                 events: [newEvent],
             });
         }
-
-        console.log(eventsArr);
         addEventWrapper.classList.remove("active");
+    
         addEventTitle.value = "";
-        addEventFrom.value = "";
-        addEventTo.value = "";
+        addObjective.value = "";
+        addDate.value = "";
         updateEvents(activeDay);
+        
         //select active day and add event class if not added
         const activeDayEl = document.querySelector(".day.active");
         if (!activeDayEl.classList.contains("event")) {
@@ -377,6 +311,7 @@ export const createCalendar = () => {
     eventsContainer.addEventListener("click", (e) => {
         if (e.target.classList.contains("event")) {
             if (confirm("Tem certeza que deseja excluir esse evento?")) {
+                console.log(e.target);
                 const eventTitle = e.target.children[0].children[1].innerHTML;
                 eventsArr.forEach((event) => {
                     if (
@@ -385,7 +320,8 @@ export const createCalendar = () => {
                         event.year === year
                     ) {
                         event.events.forEach((item, index) => {
-                            if (item.title === eventTitle) {
+                            console.log(item);
+                            if (item.tema === eventTitle) {
                                 event.events.splice(index, 1);
                             }
                         });
@@ -410,25 +346,15 @@ export const createCalendar = () => {
         localStorage.setItem("events", JSON.stringify(eventsArr));
     }
 
-    console.log(eventsArr);
-
     //function to get events from local storage
     function getEvents() {
         //check if events are already saved in local storage then return event else nothing
         if (localStorage.getItem("events") === null) {
             return;
+        }else{
+            return eventsArr.push(...JSON.parse(localStorage.getItem("events")));
         }
-        eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+        
     }
 
-    function convertTime(time) {
-        //convert time to 24 hour format
-        let timeArr = time.split(":");
-        let timeHour = timeArr[0];
-        let timeMin = timeArr[1];
-        let timeFormat = timeHour >= 12 ? "PM" : "AM";
-        timeHour = timeHour % 12 || 12;
-        time = timeHour + ":" + timeMin + " " + timeFormat;
-        return time;
-    }
 }
