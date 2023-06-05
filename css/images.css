@@ -8,8 +8,12 @@
     background-position: center;
 }
 
+body{
+    overflow: hidden;
+}
+
 .text-image{
-    width: 30%;
+    width: 35%;
     padding-bottom: 5%;
     grid-area: image;
     font-size: 1.5rem;
@@ -17,8 +21,8 @@
 }
 
 .circle-blue{
-    width: 50%;
+    width: 40%;
 }
 .image-yellow{
-    width: 50%;
+    width: 40%;
 }

@@ -1,5 +1,5 @@
 :root {
-    --primary-clr: #b38add;
+    --primary-clr: #000;
   }
   * {
     margin: 0;
@@ -17,8 +17,10 @@
     color: #fff;
     display: flex;
     border-radius: 10px;
-    background-color: #373c4f;
+    background-color: #79132A;
   }
+
+
   
   .left {
     width: 60%;
@@ -47,7 +49,7 @@
     width: 12px;
     height: 97%;
     border-radius: 0 5px 5px 0;
-    background-color: #d3d4d6d7;
+    background-color: #fff;
     transform: translateY(-50%);
   }
   .calendar::before {
@@ -111,6 +113,7 @@
     cursor: pointer;
     color: var(--primary-clr);
     border: 1px solid #f5f5f5;
+    color: #3f4458;
   }
   .calendar .days .day:nth-child(7n + 1) {
     border-left: 2px solid #f5f5f5;
@@ -127,7 +130,7 @@
   
   .calendar .days .day:not(.prev-date, .next-date):hover {
     color: #fff;
-    background-color: var(--primary-clr);
+    background-color: #79132A;
   }
   .calendar .days .prev-date,
   .calendar .days .next-date {
@@ -137,7 +140,11 @@
     position: relative;
     font-size: 2rem;
     color: #fff;
-    background-color: var(--primary-clr);
+    background-color:#79132A ;
+  }
+
+  .add-event-wrapper:hover{
+    background-color: #fff;
   }
   .calendar .days .active::before {
     content: "";
@@ -146,7 +153,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    box-shadow: 0 0 10px 2px var(--primary-clr);
+    
   }
   .calendar .days .today {
     font-size: 2rem;
@@ -184,14 +191,14 @@
     gap: 5px;
     padding: 0 20px;
     margin-bottom: 20px;
-    color: var(--primary-clr);
+    color: #000;
   }
   .calendar .goto-today .goto {
     display: flex;
     align-items: center;
     border-radius: 5px;
     overflow: hidden;
-    border: 1px solid var(--primary-clr);
+    border: 1px solid #000;
   }
   .calendar .goto-today .goto input {
     width: 100%;
@@ -200,7 +207,7 @@
     border: none;
     border-radius: 5px;
     padding: 0 20px;
-    color: var(--primary-clr);
+    color: #000;
     border-radius: 5px;
   }
   .calendar .goto-today button {
@@ -213,7 +220,8 @@
   }
   .calendar .goto-today button:hover {
     color: #fff;
-    background-color: var(--primary-clr);
+    background-color: #79132A;
+    transition: 0.3s;
   }
   .calendar .goto-today .goto button {
     border: none;
@@ -248,7 +256,12 @@
   .right .today-date .event-date {
     font-size: 1rem;
     font-weight: 400;
-    color: #878895;
+    color: #fff;
+  }
+
+
+  h3{
+    color: #fff;
   }
   .events {
     width: 100%;
@@ -323,6 +336,8 @@
     color: var(--primary-clr);
     transform: translateY(-50%);
   }
+
+  
   .events .event:hover::after {
     display: flex;
   }
@@ -336,8 +351,8 @@
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    color: #878895;
-    border: 2px solid #878895;
+    color: #fff;
+    border: 2px solid #fff;
     opacity: 0.5;
     border-radius: 50%;
     background-color: transparent;
@@ -371,6 +386,7 @@
     transform: translateX(-50%);
     transition: max-height 0.5s ease;
   }
+
   .add-event-wrapper.active {
     max-height: 300px;
   }
@@ -444,15 +460,17 @@
     outline: none;
     border: none;
     color: #fff;
-    background-color: var(--primary-clr);
+    background-color: #79132A;
     border-radius: 5px;
     cursor: pointer;
     padding: 5px 10px;
-    border: 1px solid var(--primary-clr);
+    
   }
   .add-event-footer .add-event-btn:hover {
     background-color: transparent;
     color: var(--primary-clr);
+    border: 1px solid black;
+    transition: 0.3s;
   }
   
   /* media queries */
@@ -516,6 +534,7 @@
       padding: 20px;
     }
   }
+
   
   .credits {
     position: absolute;
