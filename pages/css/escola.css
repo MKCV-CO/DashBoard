@@ -1,21 +1,28 @@
 .register-school{
-    display: grid;
-    grid-template-rows: 50px 100px 50px 50px 1fr;
-    place-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#form-register{
+    width: 100%;
+    gap: 5px;
 }
 
 form{
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    max-width: 900px;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 80%;
     gap: 20px;
 }
 
 form input{
-    width: 200px;
+    width: 235px;
     height: 30px;
     border: 0.5px solid rgb(73, 73, 73);
     border-radius: 5px;
@@ -55,9 +62,9 @@ form input{
 
 .texts-input-data, .texts-input-adress{
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-    max-width: 100%;
+    gap: 5px;
+    flex-wrap: wrap;
+    width: 100%;
     position: relative;
 }
 
@@ -72,8 +79,8 @@ form input{
 .button-area{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    width: 100%;
+    justify-content: end;
+    width: 80%;
 }
 
 .btn-register-school{
@@ -91,8 +98,7 @@ form input{
 }
 
 .btn-register-school:hover{
-    width: 250px;
-    height: 35px;
-    transition: .2s;
-    background-color: #007BFF;
+    transition: .3s;
+    box-shadow: #968f8f4d 2px 2px 2px 2px;
+    
 }
