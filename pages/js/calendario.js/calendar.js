@@ -1,4 +1,4 @@
-import { getSchool } from "./methods.js";
+import { getEvent, getSchool, postLecture } from "./methods.js";
 import { monthsAll } from "./months.js";
 
 export const createCalendar = async () => {
@@ -23,7 +23,7 @@ export const createCalendar = async () => {
         addEventSubmit = document.querySelector(".add-event-btn ");
 
     let today = new Date();
-  
+
     let activeDay;
     let month = today.getMonth();
     let year = today.getFullYear();
@@ -176,10 +176,16 @@ export const createCalendar = async () => {
     //function get active day day name and date and update eventday eventdate
     function getActiveDay(date) {
         const day = new Date(year, month, date);
-        const dayName = day.toString().split(" ")[0];
+        const dayNames = [
+          'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira',
+          'Quinta-feira', 'Sexta-feira', 'Sábado'
+        ];
+        const dayIndex = day.getDay();
+        const dayName = dayNames[dayIndex];
         eventDay.innerHTML = dayName;
         eventDate.innerHTML = date + " " + months[month] + " " + year;
-    }
+      }
+      
 
     function updateEvents(date) {
         let events = "";
@@ -226,16 +232,27 @@ export const createCalendar = async () => {
         }
     });
 
-    
-    const dateLecture = `${year}-${month}-${activeDay}`
-    
+
+    const dateLecture = `${year}-${String(month).padStart(2, '0')}-${String(activeDay).padStart(2, '0')}`
+
     addEventSubmit.addEventListener("click", () => {
-        const eventTitle = addEventTitle.value; 
+        const eventTitle = addEventTitle.value;
         const eventObjective = addObjective.value;
         const eventDate = dateLecture;
+        const selectedValue = getSelectedValue()
+
+        const newEvent = {
+            tema: eventTitle,
+            objetivo: eventObjective,
+            data_palestra: dateLecture,
+            id_escola: parseInt(selectedValue)
+        };
+
         if (eventTitle === "" || eventObjective === "" || eventDate === "") {
             alert("Por favor! Preencha todos os campos!");
             return;
+        }else{
+            // postLecture(newEvent)
         }
 
 
@@ -259,16 +276,7 @@ export const createCalendar = async () => {
             return;
         }
 
-
-        //JSON para o Banco de Dados
-        const newEvent = {
-            tema: eventTitle,
-            objetivo: eventObjective,
-            data_palestra: dateLecture,
-        };
-
-        console.log(newEvent);
-      
+        
         let eventAdded = false;
         if (eventsArr.length > 0) {
             eventsArr.forEach((item) => {
@@ -292,20 +300,19 @@ export const createCalendar = async () => {
             });
         }
         addEventWrapper.classList.remove("active");
-    
+
         addEventTitle.value = "";
         addObjective.value = "";
         addDate.value = "";
         updateEvents(activeDay);
-        
-        //select active day and add event class if not added
+
         const activeDayEl = document.querySelector(".day.active");
         if (!activeDayEl.classList.contains("event")) {
             activeDayEl.classList.add("event");
         }
     });
 
-    //function to delete event when clicked on event
+
     eventsContainer.addEventListener("click", (e) => {
         if (e.target.classList.contains("event")) {
             if (confirm("Tem certeza que deseja excluir esse evento?")) {
@@ -326,7 +333,6 @@ export const createCalendar = async () => {
                         //if no events left in a day then remove that day from eventsArr
                         if (event.events.length === 0) {
                             eventsArr.splice(eventsArr.indexOf(event), 1);
-                            //remove event class from day
                             const activeDayEl = document.querySelector(".day.active");
                             if (activeDayEl.classList.contains("event")) {
                                 activeDayEl.classList.remove("event");
@@ -349,42 +355,45 @@ export const createCalendar = async () => {
         //check if events are already saved in local storage then return event else nothing
         if (localStorage.getItem("events") === null) {
             return;
-        }else{
+        } else {
             return eventsArr.push(...JSON.parse(localStorage.getItem("events")));
         }
-        
+
     }
 
 
-    const createFilter = function(school) {
-        console.log(school);
+    const createFilter = function (school) {
         const selectSchool = document.getElementById('selectSchool')
         const schoolId = document.createElement('option')
-    
+
         schoolId.value = school[0]
         schoolId.textContent = `${school[1]} - ${school[0]}`
-    
+
         selectSchool.append(schoolId)
         return selectSchool
     };
-    const getSelected = async function() {
-    
-        const comboBoxSchool = document.getElementById('selectSchool')
-        const schools =  await getSchool()
-        const teste = schools.map(i => {
+    const getSelected = async function () {
+        const schools = await getSchool()
+        const mapingSchool = schools.map(i => {
             return [
                 i.escola.id,
                 i.escola.nome
             ]
         })
-    
+
         const select = document.getElementById('school')
-        const onlySchool = teste.map(createFilter)
-    
+        const onlySchool = mapingSchool.map(createFilter)
+
         select.replaceChildren(...onlySchool)
-    
     }
 
     await getSelected()
+
+    const getSelectedValue = () => {
+        const comboBoxSchool = document.getElementById('selectSchool');
+        const selectedValue = comboBoxSchool.value;
+        console.log(selectedValue);
+        return selectedValue
+    };
 
 }

@@ -12,7 +12,7 @@ import { createTableCompany } from './empresa/getCompany.js';
 import { createCalendar } from './calendario.js/calendar.js';
 
 const routes = {
-    "/": "../pages/index.html",
+    "/": "../pages/home/home.html",
     "/voluntario": "../pages/voluntario/voluntario.html",
     "/empresa": "../pages/empresa/empresa.html",
     "/escolas": "../pages/escola/escola.html",
