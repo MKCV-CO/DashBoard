@@ -9,7 +9,8 @@ import { registerSchool } from './escola/registerSchool.js';
 import { updateSchool } from './escola/updateSchool.js';
 import { createTableVoluntary } from './voluntario/getVoluntary.js';
 import { createTableCompany } from './empresa/getCompany.js';
-import { createCalendar } from './calendario.js/calendar.js';
+import { createCalendar } from './calendario/calendar.js';
+import { createTableEvents } from './calendario/records-calendar.js';
 
 const routes = {
     "/": "../pages/home/home.html",
@@ -17,7 +18,8 @@ const routes = {
     "/empresa": "../pages/empresa/empresa.html",
     "/escolas": "../pages/escola/escola.html",
     "/calendario": "../pages/calendario/calendario.html",
-    "/video": "../pages/video/videos.html"
+    "/video": "../pages/video/videos.html",
+    "/registro-calendario": "../pages/registro-calendario/register.html"
 }
 
 export const route = async() => {
@@ -48,6 +50,8 @@ const pathName = async (path) => {
         createTableCompany()
     }else if(path ==  '/calendario'){
         createCalendar()
+    }else if(path == '/registro-calendario'){
+        createTableEvents()
     }
 }
  

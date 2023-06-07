@@ -1,0 +1,35 @@
+<div class="container-calendar-records" id="calendar-records">
+    <h1>Registro do Calendário</h1>
+    <table class="records" id="table_records">
+        <thead>
+            <tr class="fields-table-header">
+                <th>ID Evento</th>
+                <th>Escola</th>
+                <th>Tema da Palestra</th>
+                <th>Objetivo</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>   
+        </thead>
+        <tbody id="tbody-records">
+        </tbody>
+    </table>
+    <div class="modal" id="modal-records-events">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 style="padding-left: 20px; padding-top: 10px;">Editar evento</h2>
+                <span class="modal-close" id="modalClose">&#10006;</span>
+            </header>
+            <form class="modal-form">
+                <input type="text" class="modal-field" data-event="new" placeholder="Escola" required id="school-name">
+                <input type="text" class="modal-field" data-event="new" placeholder="Tema da Palestra" required id="theme-event">
+                <input type="text" class="modal-field" data-event="new" placeholder="Objetivo da Palestra" required id="objective-event">
+                <input type="text" class="modal-field" data-event="new" placeholder="Data" required id="data-event">
+            </form>
+            <footer class="modal-footer">
+                <button class="button save" id="save-edit">Salvar</button>
+                <button class="button cancel" id="cancel-edit">Cancelar</button>
+            </footer>
+        </div>
+    </div>
+</div>

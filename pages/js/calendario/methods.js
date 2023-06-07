@@ -7,14 +7,23 @@ export const getSchool = async () => {
     const schools = school.dadosEscolas
     return schools;
 }
-
 export const getEvent = async () => {
-    const url = "http://localhost:8080/v1/cultural-path/palestra"   
-    const respose = await fetch(url)
-    const palestra = await respose.json()
-    console.log(palestra.palestras);
-    return palestra
-}
+    const url = "http://localhost:8080/v1/cultural-path/palestra";
+    const response = await fetch(url);
+    const palestra = await response.json();
+
+    const eventos = palestra.palestras.map((evento) => {
+        const dataPalestra = new Date(evento.data_palestra);
+        const dataFormatada = dataPalestra.toLocaleDateString("pt-BR"); // Define o formato da data desejado
+
+        return {
+            ...evento,
+            data_palestra: dataFormatada
+        };
+    });
+
+    return eventos;
+};
 
 
 export const postLecture = async (dataBody) => {
@@ -32,20 +41,4 @@ export const postLecture = async (dataBody) => {
     alert('Palestra adicionada no sistema!');
     localStorage.setItem("idLecture", palestra.palestra.id) 
     return palestra
-}
-
-export const excludeEvent = async (dataBody, idPalestra) => {
-
-    const initDelete = {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dataBody)
-    }
-
-    const url = `http://localhost:8080/v1/cultural-path/videos-infantil/${idPalestra}`;
-    const respose = await fetch(url, initDelete);
-    const palestra = await respose.json()
-    return palestra;
 }

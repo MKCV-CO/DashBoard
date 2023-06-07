@@ -240,6 +240,7 @@ export const createCalendar = async () => {
         const eventObjective = addObjective.value;
         const eventDate = dateLecture;
         const selectedValue = getSelectedValue()
+        console.log(selectedValue);
 
         const newEvent = {
             tema: eventTitle,
@@ -248,7 +249,7 @@ export const createCalendar = async () => {
             id_escola: parseInt(selectedValue)
         };
 
-        if (eventTitle === "" || eventObjective === "" || eventDate === "") {
+        if (eventTitle === "" || eventObjective === "" || eventDate === "" || selectedValue == "") {
             alert("Por favor! Preencha todos os campos!");
             return;
         }else{
@@ -256,7 +257,7 @@ export const createCalendar = async () => {
         }
 
 
-        //check if event is already added
+        //Verificacao caso ja tenha um evento naquele mesmo dia com o mesmo nome
         let eventExist = false;
         eventsArr.forEach((event) => {
             if (
@@ -276,7 +277,7 @@ export const createCalendar = async () => {
             return;
         }
 
-        
+
         let eventAdded = false;
         if (eventsArr.length > 0) {
             eventsArr.forEach((item) => {
@@ -366,7 +367,6 @@ export const createCalendar = async () => {
         const selectSchool = document.getElementById('selectSchool')
         const schoolId = document.createElement('option')
 
-        schoolId.value = school[0]
         schoolId.textContent = `${school[1]} - ${school[0]}`
 
         selectSchool.append(schoolId)
@@ -392,7 +392,6 @@ export const createCalendar = async () => {
     const getSelectedValue = () => {
         const comboBoxSchool = document.getElementById('selectSchool');
         const selectedValue = comboBoxSchool.value;
-        console.log(selectedValue);
         return selectedValue
     };
 
