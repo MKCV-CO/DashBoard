@@ -6,3 +6,23 @@
     gap: 30px;
     width: 100%;
 }
+
+.btn-register-event{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    background-color: #3B55A2;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-register-event:hover{
+    transition: .3s;
+    box-shadow: #968f8f4d 2px 2px 2px 2px;
+    
+}

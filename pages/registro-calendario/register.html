@@ -1,5 +1,20 @@
 <div class="container-calendar-records" id="calendar-records">
     <h1>Registro do Calendário</h1>
+    <form action="" method="post" id="form-events">
+        <div class="texts-input-data">
+            <div class="select__school" id="school">
+                <select id="selectSchool" >
+                    <option value="" id="valueSchool">Escola</option>
+                </select>
+            </div>
+            <input type="text" placeholder="Tema do evento" class="text-input" id="tema-evento" required>
+            <input type="text" placeholder="Objetivo do evento" class="text-input" id="objetivo-evento" required>
+            <input type="date" placeholder="Data do evento" class="text-input" id="data-evento" required>
+        </div>
+    </form>
+    <div class="button-area">
+        <button id="btn_register_event" class="btn-register-event">Cadastrar novo Evento</button>
+    </div>
     <table class="records" id="table_records">
         <thead>
             <tr class="fields-table-header">

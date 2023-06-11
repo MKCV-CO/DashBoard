@@ -25,20 +25,16 @@ export const getEvent = async () => {
     return eventos;
 };
 
+export const getEventDate = async () => {
+    const url = "http://localhost:8080/v1/cultural-path/palestra";
+    const response = await fetch(url);
+    const palestra = await response.json();
+    const dates = palestra.palestras.map(event => {
+        const [date, time] = event.data_palestra.split('T')
+        return date
+    });
 
-export const postLecture = async (dataBody) => {
-    const initPost = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dataBody)
-    }
+    return dates
+};
 
-    const url = 'http://localhost:8080/v1/cultural-path/palestra';
-    const respose = await fetch(url, initPost);
-    const palestra = await respose.json()
-    alert('Palestra adicionada no sistema!');
-    localStorage.setItem("idLecture", palestra.palestra.id) 
-    return palestra
-}
+

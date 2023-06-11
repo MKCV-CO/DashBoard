@@ -44,8 +44,6 @@ export const getDataSchool = async () => {
     return listValues
 }
 
-let nome = 'Matheus'
-
 const editDelete = async(event) => {
     if (event.target.tagName == 'BUTTON') {
         const [action, index] = event.target.dataset.school.split('-')
