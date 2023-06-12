@@ -1,6 +1,13 @@
 import { getEvent, getSchool, postLecture } from "./methods.js";
 import { monthsAll } from "./months.js";
 
+iziToast.error({
+    backgroundColor: '#FEB6BA',
+    position: 'topCenter',
+    title: 'ERRO AO CADASTRAR',
+    message: 'Um ou mais dados não foram preenchidos',
+});
+
 export const createCalendar = async () => {
 
     const calendar = document.querySelector(".calendar"),
@@ -177,15 +184,15 @@ export const createCalendar = async () => {
     function getActiveDay(date) {
         const day = new Date(year, month, date);
         const dayNames = [
-          'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira',
-          'Quinta-feira', 'Sexta-feira', 'Sábado'
+            'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira',
+            'Quinta-feira', 'Sexta-feira', 'Sábado'
         ];
         const dayIndex = day.getDay();
         const dayName = dayNames[dayIndex];
         eventDay.innerHTML = dayName;
         eventDate.innerHTML = date + " " + months[month] + " " + year;
-      }
-      
+    }
+
 
     function updateEvents(date) {
         let events = "";
@@ -252,7 +259,7 @@ export const createCalendar = async () => {
         if (eventTitle === "" || eventObjective === "" || eventDate === "" || selectedValue == "") {
             alert("Por favor! Preencha todos os campos!");
             return;
-        }else{
+        } else {
             // postLecture(newEvent)
         }
 
