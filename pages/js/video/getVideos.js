@@ -5,7 +5,7 @@ import { excludeVideo } from "./deleteVideo.js";
 
 
 export const getVideos = async () => {
-    const url = 'http://localhost:8080/v1/cultural-path/videos-infantil';
+    const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/videos-infantil';
     const response = await fetch(url);
     const videos = await response.json();
     if (videos.status == '200') {

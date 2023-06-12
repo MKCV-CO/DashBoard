@@ -28,7 +28,7 @@ export const excludeVoluntary = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = `http://localhost:8080/v1/cultural-path/voluntario/${idVoluntary}`;
+    const url = `https://api-culturalpath.up.railway.app/v1/cultural-path/voluntario/${idVoluntary}`;
     const respose = await fetch(url, initDelete);
     const video = await respose.json()
     successToast('VOLUNTARIO DELETADO', 'O voluntário desejado foi deletado do sistema!')

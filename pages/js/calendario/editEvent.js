@@ -104,7 +104,7 @@ export const putEvent = async () => {
     }
 
     
-    const url = `http://localhost:8080/v1/cultural-path/palestra/${idEvent}`;
+    const url = `https://api-culturalpath.up.railway.app/v1/cultural-path/palestra/${idEvent}`;
     const respose = await fetch(url, initPut);
     const palestra = await respose.json()
     infoToast('EVENTO EDITADO', 'O evento foi editado')

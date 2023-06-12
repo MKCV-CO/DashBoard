@@ -126,7 +126,7 @@ export const putSchool = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = `http://localhost:8080/v1/cultural-path/escola/${idSchool}`;
+    const url = `https://api-culturalpath.up.railway.app/v1/cultural-path/escola/${idSchool}`;
     const respose = await fetch(url, initPut);
     const video = await respose.json()
     infoToast('ESCOLA EDITADA', 'As informações da escola foi editada no sistema!')

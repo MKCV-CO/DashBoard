@@ -16,7 +16,7 @@ export const excludeSchool = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = `http://localhost:8080/v1/cultural-path/escola/${idSchool}`;
+    const url = `https://api-culturalpath.up.railway.app/v1/cultural-path/escola/${idSchool}`;
     
     const response = await fetch(url, initDelete);
     const video = await response.json()

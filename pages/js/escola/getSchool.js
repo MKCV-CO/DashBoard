@@ -4,7 +4,7 @@ import { excludeSchool } from "./deleteSchool.js"
 import { editSchool, modalSchool } from "./putSchool.js"
 
 const getSchool = async () => {
-    const url = 'http://localhost:8080/v1/cultural-path/escola'
+    const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/escola'
     const response = await fetch(url)
     const school = await response.json()
     return school.dadosEscolas;

@@ -1,5 +1,6 @@
 'use strict'
 
+import { infoToast, successToast } from "../components.js";
 import { getVideos } from "./getVideos.js";
 import { updateTableVideos } from "./postVideo.js";
 
@@ -83,9 +84,10 @@ export const putVideo = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = `http://localhost:8080/v1/cultural-path/videos-infantil/${idVideo}`;
+    const url = `https://api-culturalpath.up.railway.app/v1/cultural-path/videos-infantil/${idVideo}`;
     const respose = await fetch(url, initPut);
     const video = await respose.json()
+    infoToast('VIDEO ATUALIZADO', 'O video foi atualizado no sistema!')
     alert('Video atualizado no sistema!');
     await updateTableVideos()
     return video;

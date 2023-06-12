@@ -16,10 +16,10 @@ export const excludeEvent = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = `http://localhost:8080/v1/cultural-path/palestra/${idEvent}`;
+    const url = `https://api-culturalpath.up.railway.app/v1/cultural-path/palestra/${idEvent}`;
     const response = await fetch(url, initDelete);
     const video = await response.json()
-    successToastst('PALESTRA DELETADA', 'Palestra deletada com sucesso!')
+    successToast('PALESTRA DELETADA', 'Palestra deletada com sucesso!')
     updateTableEvents()
     return video;
 }

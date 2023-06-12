@@ -55,7 +55,7 @@ export const postSchool = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = 'http://localhost:8080/v1/cultural-path/escola';
+    const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/escola';
     const respose = await fetch(url, initPost); 
     const school = await respose.json()
     successToast('ESCOLA ADICIONADA', 'A escola foi adicionada ao sistema!')

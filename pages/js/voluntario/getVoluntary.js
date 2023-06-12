@@ -3,7 +3,7 @@
 import { excludeVoluntary } from "./deleteVoluntary.js";
 
 const getVoluntary = async () => {
-    const url = 'http://localhost:8080/v1/cultural-path/voluntario';
+    const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/voluntario';
     const response = await fetch(url);
     const voluntary = await response.json();
     if (voluntary.status == '200') {

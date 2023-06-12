@@ -15,8 +15,7 @@ export const clearFields = (classes) => {
 };
 
 export const clearSelect = () => {
-    const selectElement = document.querySelector('.teste1');
-    console.log(selectElement);
+    const selectElement = document.querySelector('.text-input');
     selectElement.selectedIndex = 0;
 }
 

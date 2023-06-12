@@ -3,7 +3,7 @@
 import { excludeCompany } from "./deleteCompany.js";
 
 const getCompany = async () => {
-    const url = 'http://localhost:8080/v1/cultural-path/empresa';
+    const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/empresa';
     const response = await fetch(url);
     const company = await response.json();
     if (company.status == '200') {

@@ -42,7 +42,7 @@ export const postVideo = async () => {
         body: JSON.stringify(dataBody)
     }
 
-    const url = 'http://localhost:8080/v1/cultural-path/videos-infantil';
+    const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/videos-infantil';
     const respose = await fetch(url, initPost);
     const video = await respose.json()
     successToast('VIDEO ADICIONADO', 'O vídeo foi adicionado ao sistema!')

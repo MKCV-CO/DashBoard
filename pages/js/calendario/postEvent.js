@@ -65,7 +65,7 @@ export const postEvent = async () => {
             body: JSON.stringify(dataBody)
         }
 
-        const url = 'http://localhost:8080/v1/cultural-path/palestra';
+        const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/palestra';
         const response = await fetch(url, initPost);
         const palestra = await response.json();
         successToast('SUCESSO AO CADASTRAR', 'Palestra adicionada ao Banco de Dados')
