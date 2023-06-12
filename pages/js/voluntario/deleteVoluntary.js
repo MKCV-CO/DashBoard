@@ -2,6 +2,7 @@
 
 import { getDataVoluntary } from "./getVoluntary.js"
 import { createRowVoluntary } from "../voluntario/getVoluntary.js"
+import { successToast } from "../components.js"
 
 
 const clearTable = () => {
@@ -30,7 +31,7 @@ export const excludeVoluntary = async () => {
     const url = `http://localhost:8080/v1/cultural-path/voluntario/${idVoluntary}`;
     const respose = await fetch(url, initDelete);
     const video = await respose.json()
-    alert('Voluntário deletado no sistema!');
+    successToast('VOLUNTARIO DELETADO', 'O voluntário desejado foi deletado do sistema!')
     await updateTableVoluntary()
     return video;
 }

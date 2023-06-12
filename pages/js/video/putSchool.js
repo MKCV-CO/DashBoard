@@ -1,5 +1,6 @@
 'use strict'
 
+import { infoToast } from "../components.js";
 import { getVideos } from "./getVideos.js";
 import { updateTableVideos } from "./postVideo.js";
 
@@ -87,6 +88,7 @@ export const putVideo = async () => {
     const respose = await fetch(url, initPut);
     const video = await respose.json()
     alert('Video atualizado no sistema!');
+    infoToast('VIDEO ATUALIZADO', 'O video foi atualizado no sistema!')
     await updateTableVideos()
     return video;
 }

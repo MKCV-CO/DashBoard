@@ -1,5 +1,6 @@
 'use strict'
 
+import { successToast } from "../components.js";
 import { getDataVideos } from "./getVideos.js";
 import { updateTableVideos } from "./postVideo.js";
 
@@ -18,7 +19,7 @@ export const excludeVideo = async () => {
     const url = `http://localhost:8080/v1/cultural-path/videos-infantil/${idVideo}`;
     const respose = await fetch(url, initDelete);
     const video = await respose.json()
-    alert('Video deletado no sistema!');
+    successToast('VIDEO DELETADO', 'O vídeo foi deletado do sistema!')
     updateTableVideos()
     return video;
 }

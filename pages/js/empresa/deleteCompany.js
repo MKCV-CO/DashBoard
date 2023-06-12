@@ -1,5 +1,6 @@
 'use strict'
 
+import { successToast } from "../components.js"
 import { getDataCompany, createRowCompany } from "./getCompany.js"
 
 
@@ -30,7 +31,7 @@ export const excludeCompany = async () => {
     const url = `http://localhost:8080/v1/cultural-path/empresa/${idCompany}`;
     const response = await fetch(url, initDelete);
     const company = await response.json()
-    alert('Empresa deletado no sistema!');
+    successToast('EMPRESA DELETADA', 'A empresa parceira foi deletada do sistema!')
     await updateTableCompany()
     return company;
 }

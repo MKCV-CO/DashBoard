@@ -19,3 +19,32 @@ export const clearSelect = () => {
     console.log(selectElement);
     selectElement.selectedIndex = 0;
 }
+
+export const errorToast = (title, message) => {
+    iziToast.error({
+        backgroundColor: '#FEB6BA',
+        position: 'bottomRight',
+        title: `${title}`,
+        message: `${message}`,
+      });
+}
+
+export const successToast = (title, message) => {
+    iziToast.success({
+        backgroundColor: '#AAFFA1',
+        position: 'bottomRight',
+        title: title,
+        message: message,
+      });
+}
+
+export const infoToast = (title, message) => {
+    iziToast.info({
+        backgroundColor: '#9ECED5',
+        position: 'bottomRight',
+        title: title,
+        message: message,
+      });
+}
+
+

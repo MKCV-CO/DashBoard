@@ -7,6 +7,7 @@ const editDelete = async (event) => {
     if (event.target.tagName == 'BUTTON') {
         const [action, index] = event.target.dataset.event.split('-')
         localStorage.setItem('deletedEvent', index)
+        localStorage.setItem('editEvent', index)
         if (action == 'edit') {
             modalEvent()
             await editEvent(index)

@@ -36,10 +36,14 @@
                 <span class="modal-close" id="modalClose">&#10006;</span>
             </header>
             <form class="modal-form">
-                <input type="text" class="modal-field" data-event="new" placeholder="Escola" required id="school-name">
+                <div class="select__school" id="schoolModal">
+                    <select id="modalSelectedSchool" >
+                        <option value="" id="valueSchool">Escola</option>
+                    </select>
+                </div>
                 <input type="text" class="modal-field" data-event="new" placeholder="Tema da Palestra" required id="theme-event">
                 <input type="text" class="modal-field" data-event="new" placeholder="Objetivo da Palestra" required id="objective-event">
-                <input type="text" class="modal-field" data-event="new" placeholder="Data" required id="data-event">
+                <input type="date" class="modal-field" data-event="new" placeholder="Data" required id="data-event">
             </form>
             <footer class="modal-footer">
                 <button class="button save" id="save-edit">Salvar</button>

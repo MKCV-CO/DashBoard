@@ -1,3 +1,4 @@
+import { successToast } from "../components.js"
 import { createRowSchool, getDataSchool } from "./getSchool.js"
 
 
@@ -57,7 +58,7 @@ export const postSchool = async () => {
     const url = 'http://localhost:8080/v1/cultural-path/escola';
     const respose = await fetch(url, initPost); 
     const school = await respose.json()
-    alert('Escola adicionada no sistema!');
+    successToast('ESCOLA ADICIONADA', 'A escola foi adicionada ao sistema!')
     updateTableSchool()
     return school;
 }

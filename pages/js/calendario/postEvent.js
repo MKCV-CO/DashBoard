@@ -1,5 +1,6 @@
 'use strict'
 
+import { errorToast, successToast } from "../components.js";
 import { updateTableEvents } from "./editEvent.js";
 import { getEventDate } from "./methods.js";
 
@@ -67,13 +68,11 @@ export const postEvent = async () => {
         const url = 'http://localhost:8080/v1/cultural-path/palestra';
         const response = await fetch(url, initPost);
         const palestra = await response.json();
-        alert('Palestra adicionada no sistema!');
+        successToast('SUCESSO AO CADASTRAR', 'Palestra adicionada ao Banco de Dados')
         updateTableEvents();
-
         return palestra;
     } else {
-        // TOAST CASO DATA JA EXISTA DENTRO DO BANCO DE DADOS
-        alert('Data da palestra ja cadastrada no sistema! Tente outra data')
+        errorToast('ERRO AO CADASTRAR EVENTO', 'Já existe um evento com essa data!')
         return null;
     }
 }

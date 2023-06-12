@@ -1,14 +1,18 @@
+import { infoToast, successToast } from "../components.js";
 import { getEvent } from "./methods.js";
 import { createRowRecords } from "./records-calendar.js";
 
 const fillFields = async (event) => {
-    console.log(event);
-    document.getElementById('school-name').value = event.nome;
     document.getElementById('theme-event').value = event.tema;
     document.getElementById('objective-event').value = event.objetivo;
-    document.getElementById('data-event').value = event.data_palestra;
-}
 
+    const brDate = event.data_palestra;
+    const parts = brDate.split('/');
+    const usDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+  
+    document.getElementById('data-event').value = usDate;
+    infoToast('INSIRA NOVAMENTE A ESCOLA', 'Insira a escola novamente no para editar!')
+  }
 const clearTable = () => {
     const rows = document.querySelectorAll(`#table_records>tbody tr`)
     rows.forEach(row => row.parentNode.removeChild(row))
@@ -31,7 +35,8 @@ export const editEvent = async (index) => {
     fillFields(detailEvent)
 }
 
-export const modalEvent = () => {
+export const modalEvent = async () => {
+
     const modal = document.getElementById('modal-records-events');
     const openModal = () => {
         modal.classList.add('active-class')
@@ -59,15 +64,26 @@ export const modalEvent = () => {
     cancelingEdit();
 };
 
+const getSelectedValue = () => {
+    const comboBoxSchool = document.getElementById('modalSelectedSchool');
+    const selectedValue = comboBoxSchool.value;
+    const parts = selectedValue.split('-');
+    const id = parseInt(parts[1].trim())
+    return id;
+};
+
 const dataEvent = () => {
-    const schoolSelected = document.getElementById('school-name').value
+    const schoolSelected =  getSelectedValue()
     const themeEvent = document.getElementById('theme-event').value
     const objectiveEvent = document.getElementById('objective-event').value
     const dateEvent = document.getElementById('data-event').value
 
     if (dataEvent) {
         const putEvent = {
-
+            tema: themeEvent,
+            objetivo: objectiveEvent,
+            data_palestra: dateEvent,
+            id_escola:schoolSelected
         }
         return putEvent
     } else {
@@ -76,10 +92,8 @@ const dataEvent = () => {
 }
 
 export const putEvent = async () => {
-
-    const dataBody = dataEvent()
-
-    const idEvent = localStorage.getItem('event')
+    const dataBody =  dataEvent()
+    const idEvent = localStorage.getItem('editEvent')
 
     const initPut = {
         method: 'PUT',
@@ -88,6 +102,14 @@ export const putEvent = async () => {
         },
         body: JSON.stringify(dataBody)
     }
+
+    
+    const url = `http://localhost:8080/v1/cultural-path/palestra/${idEvent}`;
+    const respose = await fetch(url, initPut);
+    const palestra = await respose.json()
+    infoToast('EVENTO EDITADO', 'O evento foi editado')
+    updateTableEvents()
+    return palestra;
 
 
 }

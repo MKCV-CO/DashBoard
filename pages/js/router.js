@@ -10,9 +10,10 @@ import { updateSchool } from './escola/updateSchool.js';
 import { createTableVoluntary } from './voluntario/getVoluntary.js';
 import { createTableCompany } from './empresa/getCompany.js';
 import { createTableEvents } from './calendario/records-calendar.js';
-import { getSelected } from './calendario/selected.js';
+import { getSelected, getSelectedModal } from './calendario/selected.js';
 import { registerEvent } from './calendario/registerEvent.js';
 import { validateDate } from './calendario/postEvent.js';
+import { editEvent } from './calendario/updateEvent.js';
 
 const routes = {
     "/": "../pages/home/home.html",
@@ -54,8 +55,10 @@ const pathName = async (path) => {
         createCalendar()
     }else if(path == '/registro-calendario'){
         getSelected()
+        getSelectedModal()
         validateDate()
         registerEvent()
+        editEvent()
         createTableEvents()
     }
 }

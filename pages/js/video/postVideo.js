@@ -1,5 +1,6 @@
 'use strict'
 
+import { successToast } from "../components.js"
 import { createRowVideo } from "./getVideos.js"
 import { getDataVideos } from "./getVideos.js"
 
@@ -44,7 +45,7 @@ export const postVideo = async () => {
     const url = 'http://localhost:8080/v1/cultural-path/videos-infantil';
     const respose = await fetch(url, initPost);
     const video = await respose.json()
-    alert('Video adicionada no sistema!');
+    successToast('VIDEO ADICIONADO', 'O vídeo foi adicionado ao sistema!')
     updateTableVideos()
     return video;
 }

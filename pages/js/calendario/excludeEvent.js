@@ -1,5 +1,6 @@
 'use strict'
 
+import { successToast } from "../components.js";
 import { updateTableEvents } from "./editEvent.js";
 import { getEvent } from "./methods.js";
 
@@ -18,7 +19,7 @@ export const excludeEvent = async () => {
     const url = `http://localhost:8080/v1/cultural-path/palestra/${idEvent}`;
     const response = await fetch(url, initDelete);
     const video = await response.json()
-    alert('Evento deletado do sistema!');
+    successToastst('PALESTRA DELETADA', 'Palestra deletada com sucesso!')
     updateTableEvents()
     return video;
 }

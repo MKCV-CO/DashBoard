@@ -1,5 +1,6 @@
 'use strict'
 
+import { infoToast } from "../components.js";
 import { getDataSchool } from "./getSchool.js";
 import { updateTableSchool } from "./postSchool.js";
 import { searchAdress } from "./viacep.js";
@@ -128,7 +129,7 @@ export const putSchool = async () => {
     const url = `http://localhost:8080/v1/cultural-path/escola/${idSchool}`;
     const respose = await fetch(url, initPut);
     const video = await respose.json()
-    alert('Video atualizado no sistema!');
+    infoToast('ESCOLA EDITADA', 'As informações da escola foi editada no sistema!')
     updateTableSchool()
     return video;
 }
