@@ -2,7 +2,7 @@
 
 import { excludeVoluntary } from "./deleteVoluntary.js";
 
-const getVoluntary = async () => {
+const getVoluntary = async() => {
     const url = 'https://api-culturalpath.up.railway.app/v1/cultural-path/voluntario';
     const response = await fetch(url);
     const voluntary = await response.json();
@@ -13,22 +13,22 @@ const getVoluntary = async () => {
     }
 }
 
-export const getDataVoluntary = async () => {
+export const getDataVoluntary = async() => {
     const dataVoluntary = await getVoluntary();
     let jsonVoluntary = {}
     let listVoluntary = []
 
-    dataVoluntary.map(element => {  
+    dataVoluntary.map(element => {
         jsonVoluntary = {
-            id: element.voluntario.id,
             nome: element.voluntario.nome,
             cpf: element.voluntario.cpf,
             telefone: element.voluntario.telefone,
-            email: element.voluntario.email, 
+            email: element.voluntario.email,
             idade: element.voluntario.idade,
             foto: element.voluntario.foto_rg,
+            diploma: element.voluntario.foto_diploma
         }
-        listVoluntary.push(jsonVoluntary)  
+        listVoluntary.push(jsonVoluntary)
     })
     return listVoluntary
 }
@@ -53,13 +53,13 @@ export const createRowVoluntary = (voluntary) => {
     newRow.addEventListener('click', editDelete)
 
     newRow.innerHTML = `
-        <td>${voluntary.id}</td>
         <td>${voluntary.nome}</td>
         <td>${voluntary.cpf}</td>
         <td>${voluntary.telefone}</td>
         <td>${voluntary.email}</td>
         <td>${voluntary.idade}</td>
         <td>${voluntary.foto}</td>
+        <td>${voluntary.diploma}</td>
         <td>
             <button id="delete-voluntary" data-number="delete-${voluntary.id}" class="delete-button" title="Excluir Voluntário">Excluir</button>
         </td>
@@ -67,8 +67,7 @@ export const createRowVoluntary = (voluntary) => {
     tableBody.append(newRow)
 }
 
-export const createTableVoluntary = async () => {
+export const createTableVoluntary = async() => {
     const allVoluntary = await getDataVoluntary();
     allVoluntary.forEach(createRowVoluntary)
 }
-
