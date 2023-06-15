@@ -12,7 +12,9 @@ const fillFields = async (event) => {
   
     document.getElementById('data-event').value = usDate;
     infoToast('INSIRA NOVAMENTE A ESCOLA', 'Insira a escola novamente no para editar!')
-  }
+}
+
+
 const clearTable = () => {
     const rows = document.querySelectorAll(`#table_records>tbody tr`)
     rows.forEach(row => row.parentNode.removeChild(row))
