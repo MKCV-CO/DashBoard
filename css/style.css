@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
     overflow-y: hidden;
 }
 
-body{
+body {
     height: 100vh;
     display: grid;
     grid-template-columns: 40% 60%;
@@ -14,13 +14,11 @@ body{
     gap: 50px;
 }
 
-.teste{
+.teste {
     display: flex;
     justify-content: end;
 }
 
-header{
+header {
     width: 40%;
 }
-
-

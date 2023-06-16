@@ -58,8 +58,8 @@ export const createRowVoluntary = (voluntary) => {
         <td>${voluntary.telefone}</td>
         <td>${voluntary.email}</td>
         <td>${voluntary.idade}</td>
-        <td>${voluntary.foto}</td>
-        <td>${voluntary.diploma}</td>
+        <td><a href="${voluntary.foto}" target="blanck" >${voluntary.foto}</a></td>
+        <td><a href="${voluntary.diploma}" target="blanck" >${voluntary.diploma}</a></td>
         <td>
             <button id="delete-voluntary" data-number="delete-${voluntary.id}" class="delete-button" title="Excluir Voluntário">Excluir</button>
         </td>
